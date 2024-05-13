@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DTO.Model
 {
-    internal class Færge
+    public class Færge
     {
         private List<Gæst> gæster;
         public int ID { get; set; }

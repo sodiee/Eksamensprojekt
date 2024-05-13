@@ -51,8 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\BilContext.cs" />
-    <Compile Include="Context\BilInitializer.cs" />
+    <Compile Include="Context\FærgeContext.cs" />
+    <Compile Include="Context\Initializer.cs" />
+    <Compile Include="Mappers\BilMapper.cs" />
+    <Compile Include="Mappers\FærgeMapper.cs" />
+    <Compile Include="Mappers\GæstMapper.cs" />
     <Compile Include="Model\Bil.cs" />
     <Compile Include="Model\Færge.cs" />
     <Compile Include="Model\Gæst.cs" />
@@ -65,8 +68,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Mappers\" />
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{c2402222-219e-4fc5-827b-761371f2b270}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

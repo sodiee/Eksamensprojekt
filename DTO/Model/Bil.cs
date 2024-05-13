@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Model
+namespace DTO.Model
 {
-    internal class Bil
+    public class Bil
     {
         private List<Gæst> gæster;
-        public int ID { get ; set; }
+        public int ID { get; set; }
         public Gæst FørerAfBil { get; set; }
         public int AntalGæster { get; set; }
         public List<Gæst> Gæster { get { return gæster; } set { } }

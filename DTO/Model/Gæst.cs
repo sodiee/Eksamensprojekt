@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DTO.Model
 {
-    internal class Gæst
+    public class Gæst
     {
         public int ID { get; set; }
         public string Navn { get; set; }
@@ -34,3 +34,4 @@ namespace DAL
         }
     }
 }
+

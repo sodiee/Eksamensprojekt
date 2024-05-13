@@ -1,4 +1,7 @@
-﻿using Microsoft.SqlServer.Server;
+﻿using DAL.Context;
+using DAL.Mappers;
+using DAL.Model;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,34 +10,34 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class GæstRepository
+    public class GæstRepository
     {
-        public static BilModel GetBilModel(int id)
+        public static DTO.Model.Gæst GetGæst(int id)
         {
-            using (BilContext context = new BilContext())
+            using (FærgeContext context = new FærgeContext())
             {
-                return BilMapper.Map(context.Biler.Find(id));
+                return GæstMapper.Map(context.Gæster.Find(id));
             }
         }
 
-        public static void AddBilModel(BilModel bilmodel)
+        public static void AddGæst(DTO.Model.Gæst gæst)
         {
-            using (BilContext context = new BilContext())
+            using (FærgeContext context = new FærgeContext())
             {
-                context.Biler.Add(BilMapper.Map(bilmodel));
+                context.Gæster.Add(GæstMapper.Map(gæst));
                 context.SaveChanges();
             }
         }
 
-        public static void EditBilModel(BilModel bilModel)
+        /*public static void EditGæst(Gæst gæst)
         {
-            using (BilContext context = new BilContext())
+            using (FærgeContext context = new FærgeContext())
             {
-                Model.BilModel dataBil = context.Biler.Find(bilModel.ID);
-                BilMapper.UpdateBil(bilModel, dataBil);
+                Gæst dataGæst = context.Gæster.Find(gæst.ID);
+                GæstMapper.UpdateFærge(gæst, dataGæst);
 
                 context.SaveChanges();
             }
-        }
+        }*/
     }
 }
