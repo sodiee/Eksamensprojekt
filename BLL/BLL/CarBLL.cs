@@ -9,19 +9,19 @@ using DAL.Repositories;
 
 namespace BLL.BLL
 {
-    public class BilBLL
+    public class CarBLL
     {
-        public Bil getBil(int id)
+        public Car GetCar(int id)
         {
             if (id < 0) throw new IndexOutOfRangeException();
-            return BilRepository.GetBil(id);
+            return CarRepository.GetCar(id);
         }
-        public void AddBil(Bil bil)
+        public void AddCar(Car car)
         {
-            //valider employee
-            BilRepository.AddBil(bil);
+            //valider car
+            CarRepository.AddCar(car);
         }
-        public void EditEmployee(Bil bil)
+        public void EditEmployee(Car car)
         {
 
         }

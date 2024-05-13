@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Bil.cs" />
-    <Compile Include="Model\Færge.cs" />
-    <Compile Include="Model\Gæst.cs" />
+    <Compile Include="Model\Car.cs" />
+    <Compile Include="Model\Ferry.cs" />
+    <Compile Include="Model\Passenger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

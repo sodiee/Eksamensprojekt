@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace BLL.BLL
 {
-    public class GæstBLL
+    public class PassengerBLL
     {
-        public Gæst getGæst(int id)
+        public Passenger GetPassenger(int id)
         {
             if (id < 0) throw new IndexOutOfRangeException();
-            return GæstRepository.GetGæst(id);
+            return PassengerRepository.GetPassenger(id);
         }
-        public void AddGæst(Gæst gæst)
+        public void AddGæst(Passenger passenger)
         {
             //valider employee
-            GæstRepository.AddGæst(gæst);
+            PassengerRepository.AddPassenger(passenger);
         }
-        public void EditGæst(Gæst gæst)
+        public void EditGæst(Passenger passenger)
         {
 
         }

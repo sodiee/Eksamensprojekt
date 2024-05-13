@@ -27,20 +27,26 @@ namespace WPFGUI
             InitializeComponent();
         }
 
-        FærgeBLL færgeBLL = new FærgeBLL();
-        Færge færge;
+        FerryBLL færgeBLL = new FerryBLL();
+        Ferry færge;
 
         private void VisFærger_Click(object sender, RoutedEventArgs e)
         {
             FærgeList.Items.Clear();
-            for (int i = 1; i == 20; i++)
+            foreach (var ferry in færgeBLL.GetFerryList())
             {
-                færge = færgeBLL.getFærge(i);
-                if (færge != null)
-                {
-                    FærgeList.Items.Add(færge.ToString());
-                }
+                FærgeList.Items.Add(ferry);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

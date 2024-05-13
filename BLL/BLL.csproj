@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\BilBLL.cs" />
-    <Compile Include="BLL\FærgeBLL.cs" />
-    <Compile Include="BLL\GæstBLL.cs" />
+    <Compile Include="BLL\CarBLL.cs" />
+    <Compile Include="BLL\FerryBLL.cs" />
+    <Compile Include="BLL\PassengerBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

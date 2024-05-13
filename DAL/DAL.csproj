@@ -51,18 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\FærgeContext.cs" />
-    <Compile Include="Context\Initializer.cs" />
-    <Compile Include="Mappers\BilMapper.cs" />
-    <Compile Include="Mappers\FærgeMapper.cs" />
-    <Compile Include="Mappers\GæstMapper.cs" />
-    <Compile Include="Model\Bil.cs" />
-    <Compile Include="Model\Færge.cs" />
-    <Compile Include="Model\Gæst.cs" />
+    <Compile Include="Context\CarContext.cs" />
+    <Compile Include="Context\CarInitializer.cs" />
+    <Compile Include="Context\FerryContext.cs" />
+    <Compile Include="Context\FerryInitializer.cs" />
+    <Compile Include="Context\PassengerContext.cs" />
+    <Compile Include="Context\PassengerInitializer.cs" />
+    <Compile Include="Mappers\CarMapper.cs" />
+    <Compile Include="Mappers\FerryMapper.cs" />
+    <Compile Include="Mappers\PassengerMapper.cs" />
+    <Compile Include="Model\Car.cs" />
+    <Compile Include="Model\Ferry.cs" />
+    <Compile Include="Model\Passenger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\BilRepository.cs" />
-    <Compile Include="Repositories\FærgeRepository.cs" />
-    <Compile Include="Repositories\GæstRepository.cs" />
+    <Compile Include="Repositories\CarRepository.cs" />
+    <Compile Include="Repositories\FerryRepository.cs" />
+    <Compile Include="Repositories\PassengerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

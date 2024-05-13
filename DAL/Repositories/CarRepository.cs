@@ -10,21 +10,21 @@ using DAL.Mappers;
 
 namespace DAL.Repositories
 {
-    public class BilRepository
+    public class CarRepository
     {
-        public static DTO.Model.Bil GetBil(int id)
+        public static DTO.Model.Car GetCar(int id)
         {
-            using (FærgeContext context = new FærgeContext())
+            using (CarContext context = new CarContext())
             {
-                return BilMapper.Map(context.Biler.Find(id));
+                return CarMapper.Map(context.Cars.Find(id));
             }
         }
 
-        public static void AddBil(DTO.Model.Bil bilmodel)
+        public static void AddCar(DTO.Model.Car bilmodel)
         {
-            using (FærgeContext context = new FærgeContext())
+            using (CarContext context = new CarContext())
             {
-                context.Biler.Add(BilMapper.Map(bilmodel));
+                context.Cars.Add(CarMapper.Map(bilmodel));
                 context.SaveChanges();
             }
         }

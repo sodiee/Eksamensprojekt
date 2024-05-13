@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class GæstRepository
+    public class PassengerRepository
     {
-        public static DTO.Model.Gæst GetGæst(int id)
+        public static DTO.Model.Passenger GetPassenger(int id)
         {
-            using (FærgeContext context = new FærgeContext())
+            using (PassengerContext context = new PassengerContext())
             {
-                return GæstMapper.Map(context.Gæster.Find(id));
+                return PassengerMapper.Map(context.Passengers.Find(id));
             }
         }
 
-        public static void AddGæst(DTO.Model.Gæst gæst)
+        public static void AddPassenger(DTO.Model.Passenger gæst)
         {
-            using (FærgeContext context = new FærgeContext())
+            using (PassengerContext context = new PassengerContext())
             {
-                context.Gæster.Add(GæstMapper.Map(gæst));
+                context.Passengers.Add(PassengerMapper.Map(gæst));
                 context.SaveChanges();
             }
         }

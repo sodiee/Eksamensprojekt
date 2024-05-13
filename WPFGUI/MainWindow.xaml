@@ -8,7 +8,20 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ListBox x:Name="FærgeList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="73,163,447,74"/>
-        <Button x:Name="VisFærger" Content="Button" HorizontalAlignment="Left" Margin="431,328,0,0" VerticalAlignment="Top" Click="VisFærger_Click"/>
+        <Button x:Name="VisFærger" Content="Vis færger" HorizontalAlignment="Left" Margin="73,365,0,0" VerticalAlignment="Top" Click="VisFærger_Click"/>
+        <Button x:Name="FindFærgeBtn" Content="Find færge på ID:" HorizontalAlignment="Left" Margin="73,113,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <TextBox x:Name="FærgeIDSøgefeltTxt" HorizontalAlignment="Left" Margin="187,113,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="VisValgteFærgeBtn" Content="Vis valgte færge" HorizontalAlignment="Left" Margin="358,290,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FærgeIDLbl" Content="ID" HorizontalAlignment="Left" Margin="554,163,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FærgeNavnLbl" Content="Navn" HorizontalAlignment="Left" Margin="554,189,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FærgeAntalBilerLbl" Content="Antal gæster" HorizontalAlignment="Left" Margin="554,241,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FærgeAntalGæsterLbl" Content="Antal biler" HorizontalAlignment="Left" Margin="554,215,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FærgeAntalGæsterTxt" HorizontalAlignment="Left" Margin="637,245,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FærgeAntalBilerTxt" HorizontalAlignment="Left" Margin="637,219,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FærgeNavnTxt" HorizontalAlignment="Left" Margin="637,193,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FærgeIDTxt" HorizontalAlignment="Left" Margin="637,167,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="VisGæsterPåFærgeBtn" Content="Vis gæster" HorizontalAlignment="Left" Margin="358,315,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="VisBilerPåFærgeBtn" Content="Vis biler" HorizontalAlignment="Left" Margin="358,340,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
