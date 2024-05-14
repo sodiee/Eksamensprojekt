@@ -26,6 +26,7 @@ namespace DAL.Mappers
             }
 
             return new DTO.Model.Ferry(
+                            færge.FerryID,
                             færge.Name,
                             færge.MaxNumberOfPassengers,
                             færge.MaxNumberOfCars,
@@ -51,6 +52,7 @@ namespace DAL.Mappers
             }
 
             return new Ferry(
+                            færge.FerryID,
                             færge.Name,
                             færge.MaxNumberOfPassengers,
                             færge.MaxNumberOfCars,

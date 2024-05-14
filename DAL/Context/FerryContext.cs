@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using DAL.Model;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity.Infrastructure;
 
 namespace DAL.Context
 {

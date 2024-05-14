@@ -41,14 +41,16 @@ namespace DAL
             this.cars = cars;
         }
 
-public void AddGæst(Passenger gæst)
+        public void AddPassenger(Passenger passenger)
         {
-            Passengers.Add(gæst);
+            Passengers.Add(passenger);
         }
 
-        public void DeleteGæst(Passenger gæst)
+        public void DeletePassenger(Passenger passenger)
         {
-            Passengers.Remove(gæst);
+            Passengers.Remove(passenger);
         }
+
+       
     }
 }

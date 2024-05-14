@@ -3,6 +3,7 @@ using DAL.Mappers;
 using DAL.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,16 +42,23 @@ namespace DAL.Repositories
             }
         }
 
-        /*public static void EditFærge(Færge færge)
+        public static void EditFærge(DTO.Model.Ferry dtoFerry)
         {
-            using (FærgeContext context = new FærgeContext())
+            using (FerryContext context = new FerryContext())
             {
-                Færge dataFærge = context.Færger.Find(færge.ID);
-                FærgeMapper.UpdateFærge(færge, dataFærge);
+                Ferry ferryToEdit = context.Ferries.Find(dtoFerry.FerryID);
+                if (ferryToEdit != null)
+                {
+                    ferryToEdit.Name = dtoFerry.Name;
+                }
+                else
+                {
+                    throw new DbUpdateException();
+                }
 
                 context.SaveChanges();
             }
-        }*/
+        }
         /*
         public static void AddGæstTilFærge(DTO.Model.Færge færge, DTO.Model.Gæst gæst)
         {

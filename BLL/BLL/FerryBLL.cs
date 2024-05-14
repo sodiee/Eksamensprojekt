@@ -17,9 +17,9 @@ namespace BLL.BLL
             //valider ferry
             FerryRepository.AddFerry(ferry);
         }
-        public void EditFerry(Ferry ferry)
+        public void UpdateFerry(Ferry ferry)
         {
-
+            FerryRepository.EditFærge(ferry);
         }
 
         public List<Ferry> GetFerryList()
