@@ -34,7 +34,6 @@ namespace WPFGUI
 
         private void AddPassengerBtn_Click(object sender, RoutedEventArgs e)
         {
-            //opret
             passengerToAdd = new Passenger(PassengerNameTxt.Text, PassengerGenderTxt.Text, int.Parse(PassengerAgeTxt.Text), PassengerBirthdayDaPi.SelectedDate.Value.Date);
 
             //gem - tror den bliver tilføjet dobbelt her uden ferryid
@@ -42,9 +41,6 @@ namespace WPFGUI
 
             //tilføj til færge
             ferryBLL.AddPassengerToFerry(ferry, passengerToAdd);
-
-            //update færge
-            //ferryBLL.UpdateFerry(ferry);
 
             MessageBox.Show("Gæst er tilføjet til færge");
 

@@ -9,35 +9,35 @@ namespace DAL
 {
     public class Ferry
     {
-        private List<Passenger> passengers = new List<Passenger>();
+        private ICollection<Passenger> passengers = new List<Passenger>();
         private List<Car> cars = new List<Car>();
         public int FerryID { get; set; }
         public string Name { get; set; }
         public int MaxNumberOfPassengers { get; set; }
         public int MaxNumberOfCars { get; set; }
-        public List<Passenger> Passengers { get { return passengers; } set { } }
+        public ICollection<Passenger> Passengers { get { return passengers; } set { } }
         public List<Car> Cars { get { return cars; } set { } }
 
         public Ferry() { }
 
-        public Ferry(string name, int maxNumberOfPassengers, int maxNumberOfCars, List<Passenger> passengers, List<Car> cars)
+        public Ferry(string name, int maxNumberOfPassengers, int maxNumberOfCars, List<Car> cars)
         {
             this.Name = name;
             this.MaxNumberOfPassengers = maxNumberOfPassengers;
             this.MaxNumberOfCars = maxNumberOfCars;
 
-            this.passengers = passengers;
+            //this.Passengers = new List<Passenger>();
             this.cars = cars;
         }
 
-        public Ferry(int id, string name, int maxNumberOfPassengers, int maxNumberOfCars, List<Passenger> passengers, List<Car> cars)
+        public Ferry(int id, string name, int maxNumberOfPassengers, int maxNumberOfCars, List<Car> cars)
         {
             this.FerryID = id;
             this.Name = name;
             this.MaxNumberOfPassengers = maxNumberOfPassengers;
             this.MaxNumberOfCars = maxNumberOfCars;
 
-            this.passengers = passengers;
+            //this.Passengers = new List<Passenger>();
             this.cars = cars;
         }
 

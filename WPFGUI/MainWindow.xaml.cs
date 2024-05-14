@@ -37,11 +37,7 @@ namespace WPFGUI
 
         private void VisFærger_Click(object sender, RoutedEventArgs e)
         {
-            FerryList.Items.Clear();
-            foreach (var ferry in ferryBLL.GetFerryList())
-            {
-                FerryList.Items.Add(ferry);
-            }
+            Reload();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -65,7 +61,7 @@ namespace WPFGUI
         private void EditFerryBtn_Click(object sender, RoutedEventArgs e)
         {
             Ferry temp = (Ferry)FerryList.SelectedItem;
-            ferry = new Ferry(temp.FerryID, FerryNameTxt.Text, temp.MaxNumberOfPassengers, temp.MaxNumberOfCars, temp.Passengers, temp.Cars);
+            ferry = new Ferry(temp.FerryID, FerryNameTxt.Text, temp.MaxNumberOfPassengers, temp.MaxNumberOfCars, temp.Cars);
             ferryBLL.UpdateFerry(ferry);
         }
 
@@ -124,6 +120,7 @@ namespace WPFGUI
             {
                 MessageBox.Show("Vælg en færge");
             }
+            Reload();
         }
 
         private void AddCarToSelectedFerryBtn_Click(object sender, RoutedEventArgs e)
@@ -137,6 +134,15 @@ namespace WPFGUI
             else
             {
                 MessageBox.Show("Vælg en færge");
+            }
+        }
+
+        private void Reload()
+        {
+            FerryList.Items.Clear();
+            foreach (var ferry in ferryBLL.GetFerryList())
+            {
+                FerryList.Items.Add(ferry);
             }
         }
     }

@@ -14,7 +14,7 @@ namespace DAL.Repositories
     {
         public static DTO.Model.Passenger GetPassenger(int id)
         {
-            using (PassengerContext context = new PassengerContext())
+            using (DataBaseContext context = new DataBaseContext())
             {
                 return PassengerMapper.Map(context.Passengers.Find(id));
             }
@@ -22,7 +22,7 @@ namespace DAL.Repositories
 
         public static void AddPassenger(DTO.Model.Passenger gæst)
         {
-            using (PassengerContext context = new PassengerContext())
+            using (DataBaseContext context = new DataBaseContext())
             {
                 Passenger addedPassenger = context.Passengers.Add(PassengerMapper.Map(gæst));
                 context.SaveChanges();
@@ -33,7 +33,7 @@ namespace DAL.Repositories
 
         public static void RemovePassenger(DTO.Model.Passenger passenger)
         {
-            using (PassengerContext context = new PassengerContext())
+            using (DataBaseContext context = new DataBaseContext())
             {
                 Passenger pToRemove = PassengerMapper.Map(GetPassenger(passenger.PassengerID));
                 context.Passengers.Remove(pToRemove);

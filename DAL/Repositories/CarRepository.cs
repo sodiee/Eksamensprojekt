@@ -13,8 +13,8 @@ namespace DAL.Repositories
     public class CarRepository
     {
         public static DTO.Model.Car GetCar(int id)
-        {
-            using (CarContext context = new CarContext())
+        { 
+            using (DataBaseContext context = new DataBaseContext())
             {
                 return CarMapper.Map(context.Cars.Find(id));
             }
@@ -24,7 +24,7 @@ namespace DAL.Repositories
         {
             try
             {
-                using (CarContext context = new CarContext())
+                using (DataBaseContext context = new DataBaseContext())
                 {
                     context.Cars.Add(CarMapper.Map(bilmodel));
                     context.SaveChanges();

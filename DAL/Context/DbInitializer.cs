@@ -4,14 +4,24 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Mappers;
 using DAL.Model;
+using DAL.Repositories;
 
 namespace DAL.Context
 {
-    internal class PassengerInitializer : CreateDatabaseIfNotExists<PassengerContext> //CreateDatabaseIfNotExists<FærgeContext> DropCreateDatabaseIfModelChanges<FærgeContext>
+    public class DbInitializer : CreateDatabaseIfNotExists<DataBaseContext> //CreateDatabaseIfNotExists<FærgeContext> DropCreateDatabaseIfModelChanges<FærgeContext>
     {
-        protected override void Seed(PassengerContext context)
+        protected override void Seed(DataBaseContext context)
         {
+            //Ferry
+            context.Ferries.Add(new Ferry("Molslinjen", 100, 400, new List<Car>()));
+            context.Ferries.Add(new Ferry("Scandlines", 10, 40, new List<Car>()));
+            context.Ferries.Add(new Ferry("Stenaline", 50, 200, new List<Car>()));
+
+
+
+            //Passengers
             var passengers = new List<Passenger>
                 {
                     new Passenger("Mathias", "Dreng", 23, new DateTime(2001, 2, 17)),
@@ -26,6 +36,9 @@ namespace DAL.Context
                 context.Passengers.Add(passenger);
             }
 
+            //Car
+            context.Cars.Add(new Car(null, 0, "Mazda", "3", "AM12345"));
+
             context.SaveChanges();
         }
 
@@ -35,4 +48,4 @@ namespace DAL.Context
             string result = System.Data.Entity.SqlServer.SqlFunctions.Char(65);
         }
     }
-}
+    }
