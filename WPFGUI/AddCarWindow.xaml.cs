@@ -21,9 +21,15 @@ namespace WPFGUI
     /// </summary>
     public partial class AddCarWindow : Window
     {
-        public AddCarWindow()
+        public AddCarWindow(Ferry selectedFerry)
         {
             InitializeComponent();
+            this.ferry = selectedFerry;
+            CarDriverCboBox.Items.Clear();
+            foreach (var passenger in ferryBLL.GetPassengers(ferry))
+            {
+                CarDriverCboBox.Items.Add(passenger);
+            }
         }
 
         FerryBLL ferryBLL = new FerryBLL();
@@ -42,9 +48,13 @@ namespace WPFGUI
             this.Close();
         }
 
-        private void CarDriverCboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /*private void CarDriverCboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-        }
+            CarDriverCboBox.Items.Clear();
+            foreach (var passenger in ferryBLL.GetPassengers(ferry))
+            {
+                CarDriverCboBox.Items.Add(passenger);
+            }
+        }*/
     }
 }

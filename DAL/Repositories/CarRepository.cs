@@ -22,10 +22,16 @@ namespace DAL.Repositories
 
         public static void AddCar(DTO.Model.Car bilmodel)
         {
-            using (CarContext context = new CarContext())
+            try
             {
-                context.Cars.Add(CarMapper.Map(bilmodel));
-                context.SaveChanges();
+                using (CarContext context = new CarContext())
+                {
+                    context.Cars.Add(CarMapper.Map(bilmodel));
+                    context.SaveChanges();
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
 

@@ -95,23 +95,49 @@ namespace WPFGUI
 
         private void ShowPassengersOnFerryBtn_Click(object sender, RoutedEventArgs e)
         {
-            Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
+            if (FerryList.SelectedItem != null)
+            {
+                Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
             ShowPassengersWindow spw = new ShowPassengersWindow(selectedFerry);
             spw.Show();
+            }
+            else
+            {
+                MessageBox.Show("Vælg en færge");
+            }
+        }
+
+        private void ShowCarsOnFerryBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void AddPassengerToSelectedFerryBtn_Click(object sender, RoutedEventArgs e)
         {
-            Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
-            AddPassengerWindow apw = new AddPassengerWindow(selectedFerry);
-            apw.Show();
-
+            if (FerryList.SelectedItem != null)
+            {
+                Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
+                AddPassengerWindow apw = new AddPassengerWindow(selectedFerry);
+                apw.Show();
+            }
+            else
+            {
+                MessageBox.Show("Vælg en færge");
+            }
         }
 
         private void AddCarToSelectedFerryBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddCarWindow acw = new AddCarWindow();
-            acw.Show();
+            if (FerryList.SelectedItem != null)
+            {
+                Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
+                AddCarWindow acw = new AddCarWindow(selectedFerry);
+                acw.Show();
+            }
+            else
+            {
+                MessageBox.Show("Vælg en færge");
+            }
         }
     }
 }
