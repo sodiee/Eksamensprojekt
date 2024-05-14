@@ -1,0 +1,24 @@
+﻿<Window x:Class="WPFGUI.AddCarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFGUI"
+        mc:Ignorable="d"
+        Title="AddCarWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="CarNameLbl" Content="Navn:" HorizontalAlignment="Left" Margin="56,76,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CarModelLbl" Content="Model:" HorizontalAlignment="Left" Margin="56,107,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CarLicensePlateLbl" Content="Nummerplade:" HorizontalAlignment="Left" Margin="56,138,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CarDriverLbl" Content="Fører:" HorizontalAlignment="Left" Margin="56,0,0,0" VerticalAlignment="Center"/>
+        <TextBox x:Name="CarLicensePlateTxt" HorizontalAlignment="Left" Margin="150,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarModelTxt" HorizontalAlignment="Left" Margin="150,111,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarNameTxt" HorizontalAlignment="Left" Margin="150,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="40,67,486,153"/>
+        <Button x:Name="AddCarBtn" Content="Tilføj bil" HorizontalAlignment="Left" Margin="224,245,0,0" VerticalAlignment="Top" Click="AddCarBtn_Click"/>
+        <ComboBox x:Name="CarDriverCboBox" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Center" Width="120" SelectionChanged="CarDriverCboBox_SelectionChanged"/>
+        <Label x:Name="CarNumberOfPassengersLbl" Content="Antal af gæster:" HorizontalAlignment="Left" Margin="56,169,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CarNumberOfPassengersTxt" HorizontalAlignment="Left" Margin="150,173,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

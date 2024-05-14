@@ -19,7 +19,7 @@ namespace BLL.BLL
         }
         public void UpdateFerry(Ferry ferry)
         {
-            FerryRepository.EditFærge(ferry);
+            FerryRepository.UpdateFerry(ferry);
         }
 
         public List<Ferry> GetFerryList()
@@ -27,9 +27,14 @@ namespace BLL.BLL
             return FerryRepository.getFerrys();
         }
 
-        /*public void AddGæstTilFærge(Færge færge, Gæst gæst) 
+        public List<Passenger> GetPassengers(Ferry ferry)
         {
-            FærgeRepository.AddGæstTilFærge(færge, gæst);
-        }*/
+            return FerryRepository.GetPassengers(ferry);
+        }
+
+        public void AddPassengerToFerry(Ferry ferry, Passenger passenger) 
+        {
+            FerryRepository.AddPassengerToFerry(ferry, passenger);
+        }
     }
 }

@@ -19,13 +19,13 @@
         <TextBox x:Name="FerryNumberOfCarsTxt" IsReadOnly="true" HorizontalAlignment="Left" Margin="637,219,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="FerryNameTxt" HorizontalAlignment="Left" Margin="637,193,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="FerryIDTxt" HorizontalAlignment="Left" Margin="637,167,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="ShowPassengersOnFerryBtn" Content="Vis gæster" HorizontalAlignment="Left" Margin="358,315,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ShowCarsOnFerryBtn" Content="Vis biler" HorizontalAlignment="Left" Margin="358,340,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="AddPassengerToSelectedFerryBtn" Content="Tilføj ny passager" HorizontalAlignment="Left" Margin="358,178,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="AddCarToSelectedFerryBtn" Content="Tilføj ny bil" HorizontalAlignment="Left" Margin="358,203,0,0" VerticalAlignment="Top"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="188" Margin="544,122,0,0" VerticalAlignment="Top" Width="226"/>
+        <Button x:Name="AddPassengerToSelectedFerryBtn" Content="Tilføj ny passager" HorizontalAlignment="Left" Margin="358,178,0,0" VerticalAlignment="Top" Click="AddPassengerToSelectedFerryBtn_Click"/>
+        <Button x:Name="AddCarToSelectedFerryBtn" Content="Tilføj ny bil" HorizontalAlignment="Left" Margin="358,203,0,0" VerticalAlignment="Top" Click="AddCarToSelectedFerryBtn_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="203" Margin="544,122,0,0" VerticalAlignment="Top" Width="226"/>
         <Label Content="Info:" HorizontalAlignment="Left" Margin="565,137,0,0" VerticalAlignment="Top"/>
         <Button x:Name="EditFerryBtn" Content="Rediger navn" HorizontalAlignment="Left" Margin="684,280,0,0" VerticalAlignment="Top" Click="EditFerryBtn_Click"/>
+        <Button x:Name="ShowPassengersOnFerryBtn" Content="Vis gæster" HorizontalAlignment="Left" Margin="358,315,0,0" VerticalAlignment="Top" Click="ShowPassengersOnFerryBtn_Click"/>
 
     </Grid>
 </Window>

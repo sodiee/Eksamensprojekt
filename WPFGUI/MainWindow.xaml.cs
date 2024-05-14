@@ -51,12 +51,15 @@ namespace WPFGUI
 
         private void FerryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ferry = (Ferry)FerryList.SelectedItem;
+            if (FerryList.SelectedItem != null)
+            {
+                ferry = (Ferry)FerryList.SelectedItem;
 
-            FerryIDTxt.Text = ferry.FerryID.ToString();
-            FerryNameTxt.Text = ferry.Name;
-            FerryNumberOfPassengersTxt.Text = ferry.Passengers.Count.ToString();
-            FerryNumberOfCarsTxt.Text = ferry.Cars.Count.ToString();
+                FerryIDTxt.Text = ferry.FerryID.ToString();
+                FerryNameTxt.Text = ferry.Name;
+                FerryNumberOfPassengersTxt.Text = ferry.Passengers.Count.ToString();
+                FerryNumberOfCarsTxt.Text = ferry.Cars.Count.ToString();
+            }
         }
 
         private void EditFerryBtn_Click(object sender, RoutedEventArgs e)
@@ -88,6 +91,27 @@ namespace WPFGUI
                 }
             }
 
+        }
+
+        private void ShowPassengersOnFerryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
+            ShowPassengersWindow spw = new ShowPassengersWindow(selectedFerry);
+            spw.Show();
+        }
+
+        private void AddPassengerToSelectedFerryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
+            AddPassengerWindow apw = new AddPassengerWindow(selectedFerry);
+            apw.Show();
+
+        }
+
+        private void AddCarToSelectedFerryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddCarWindow acw = new AddCarWindow();
+            acw.Show();
         }
     }
 }

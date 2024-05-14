@@ -24,8 +24,21 @@ namespace DAL.Repositories
         {
             using (PassengerContext context = new PassengerContext())
             {
-                context.Passengers.Add(PassengerMapper.Map(gæst));
+                Passenger addedPassenger = context.Passengers.Add(PassengerMapper.Map(gæst));
                 context.SaveChanges();
+
+                gæst.PassengerID = addedPassenger.PassengerID;
+            }
+        }
+
+        public static void RemovePassenger(DTO.Model.Passenger passenger)
+        {
+            using (PassengerContext context = new PassengerContext())
+            {
+                Passenger pToRemove = PassengerMapper.Map(GetPassenger(passenger.PassengerID));
+                context.Passengers.Remove(pToRemove);
+
+                context.SaveChanges ();
             }
         }
 

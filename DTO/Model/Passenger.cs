@@ -32,6 +32,11 @@ namespace DTO.Model
             this.Age = age;
             this.Birthday = birthday;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
 

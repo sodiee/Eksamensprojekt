@@ -15,9 +15,9 @@ namespace DAL.Context
 
         public DbSet<Passenger> Passengers { get; set; }
 
-        /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }*/
+        }
     }
 }

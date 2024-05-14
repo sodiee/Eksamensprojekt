@@ -1,6 +1,7 @@
 ﻿using DAL.Context;
 using DAL.Mappers;
 using DAL.Model;
+using DTO.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
@@ -42,14 +43,49 @@ namespace DAL.Repositories
             }
         }
 
-        public static void EditFærge(DTO.Model.Ferry dtoFerry)
+        public static List<DTO.Model.Passenger> GetPassengers(DTO.Model.Ferry ferry)
+        {
+            using (var ferryContext = new FerryContext())
+            {
+                List<DTO.Model.Passenger> resList = new List<DTO.Model.Passenger>();
+                var passengersOnFerry = (from f in ferryContext.Ferries
+                                         where f.FerryID == ferry.FerryID
+                                         from passenger in f.Passengers
+                                         select passenger).ToList();
+                foreach (var passengers in passengersOnFerry)
+                {
+                    resList.Add(PassengerMapper.Map(passengers));
+                }
+                return resList;
+            }
+        }
+
+        public static void UpdateFerry(DTO.Model.Ferry dtoFerry)
         {
             using (FerryContext context = new FerryContext())
             {
                 Ferry ferryToEdit = context.Ferries.Find(dtoFerry.FerryID);
+                
                 if (ferryToEdit != null)
                 {
                     ferryToEdit.Name = dtoFerry.Name;
+
+                    // Tilføj nye passagerer
+                    foreach (DTO.Model.Passenger dtoPassenger in dtoFerry.Passengers)
+                    {
+                        if (!ferryToEdit.Passengers.Any(p => p.PassengerID == dtoPassenger.PassengerID))
+                        {
+                            // Passageren findes ikke på færgen, tilføj den
+                            ferryToEdit.Passengers.Add(PassengerMapper.Map(dtoPassenger));
+                        }
+                    }
+
+                    // Fjern passagerer, der ikke længere er på færgen
+                    var passengersToRemove = ferryToEdit.Passengers.Where(p => !dtoFerry.Passengers.Any(dp => dp.PassengerID == p.PassengerID)).ToList();
+                    foreach (var passengerToRemove in passengersToRemove)
+                    {
+                        ferryToEdit.Passengers.Remove(passengerToRemove);
+                    }
                 }
                 else
                 {
@@ -59,16 +95,20 @@ namespace DAL.Repositories
                 context.SaveChanges();
             }
         }
-        /*
-        public static void AddGæstTilFærge(DTO.Model.Færge færge, DTO.Model.Gæst gæst)
+        
+        public static void AddPassengerToFerry(DTO.Model.Ferry ferry, DTO.Model.Passenger passenger)
         {
-            Færge temp;
-            using (FærgeContext context = new FærgeContext())
+            using (FerryContext context = new FerryContext())
             {
-                temp = context.Færger.Find(færge.ID);
-                temp.Gæster.Add(gæst);
+                // Hent færgen fra databasen
+                Ferry temp = context.Ferries.Find(ferry.FerryID);
+
+                // Tilføj passageren til færgen
+                temp.Passengers.Add(PassengerMapper.Map(passenger));
+
+                // Gem ændringerne i databasen
                 context.SaveChanges();
             }
-        }*/
+           }
     }
 }

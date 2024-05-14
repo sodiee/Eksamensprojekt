@@ -41,6 +41,16 @@ namespace DTO.Model
             this.cars = cars;
         }
 
+        public void AddPassenger(Passenger passenger)
+        {
+            Passengers.Add(passenger);
+        }
+
+        public void DeletePassenger(Passenger passenger)
+        {
+            Passengers.Remove(passenger);
+        }
+
         public override string ToString()
         {
             return "ID: " + this.FerryID + " " + this.Name + ", Cars: " + this.Cars.Count + "/" + this.MaxNumberOfCars + ", passengers: " + this.Passengers.Count + "/" + this.MaxNumberOfPassengers;
