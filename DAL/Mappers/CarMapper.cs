@@ -12,7 +12,7 @@ namespace DAL.Mappers
         public static DTO.Model.Car Map(Car bil)
         {
             return new DTO.Model.Car(
-                            bil.CarID,
+                            //bil.CarID,
                             new DTO.Model.Passenger(bil.Driver.Name, bil.Driver.Gender, bil.Driver.Age, bil.Driver.Birthday),
                             bil.NumberOfPassengers,
                             bil.Name,
@@ -24,7 +24,7 @@ namespace DAL.Mappers
         public static Car Map(DTO.Model.Car bil)
         {
             return new Car(
-                bil.CarID,
+                //bil.CarID,
                 new Passenger(bil.Driver.Name, bil.Driver.Gender, bil.Driver.Age, bil.Driver.Birthday),
                 bil.NumberOfPassengers,
                 bil.Name,
