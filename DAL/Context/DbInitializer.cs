@@ -14,30 +14,24 @@ namespace DAL.Context
     {
         protected override void Seed(DataBaseContext context)
         {
-            //Ferry
-            context.Ferries.Add(new Ferry("Molslinjen", 100, 400, new List<Car>()));
-            context.Ferries.Add(new Ferry("Scandlines", 10, 40, new List<Car>()));
-            context.Ferries.Add(new Ferry("Stenaline", 50, 200, new List<Car>()));
 
+            Ferry f1 = new Ferry("Molslinjen", 400, 100, 100, 120, new List<Passenger>(), new List<Car>());
+            Ferry f2 = new Ferry("Scandlines", 40, 10, 110, 130, new List<Passenger>(), new List<Car>());
+            Ferry f3 = new Ferry("Stenaline", 200, 50, 130, 150, new List<Passenger>(), new List<Car>());
 
+            Passenger passenger = new Passenger("Mathias", "Dreng", 23, new DateTime(2001, 2, 17));
 
-            //Passengers
-            var passengers = new List<Passenger>
-                {
-                    new Passenger("Mathias", "Dreng", 23, new DateTime(2001, 2, 17)),
-                    new Passenger("Laura", "Pige", 25, new DateTime(1999, 5, 8)),
-                    new Passenger("Thomas", "Mand", 30, new DateTime(1994, 10, 15)),
-                    new Passenger("Emma", "Pige", 28, new DateTime(1996, 7, 20)),
-                    new Passenger("Jonas", "Dreng", 22, new DateTime(2002, 3, 12)),
-                };
+            Car car = new Car(null, 0, "Mazda", "3", "AM12345");
 
-            foreach (var passenger in passengers)
-            {
-                context.Passengers.Add(passenger);
-            }
+            car.Driver = passenger;
+            f1.Passengers.Add(passenger);
+            f1.Cars.Add(car);
 
-            //Car
-            context.Cars.Add(new Car(null, 0, "Mazda", "3", "AM12345"));
+            context.Passengers.Add(passenger) ;
+            context.Cars.Add(car);
+            context.Ferries.Add(f1 );
+            context.Ferries.Add(f2);
+            context.Ferries.Add(f3);
 
             context.SaveChanges();
         }

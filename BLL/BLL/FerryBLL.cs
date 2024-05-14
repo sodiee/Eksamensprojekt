@@ -24,8 +24,8 @@ namespace BLL.BLL
 
         public List<Ferry> GetFerryList()
         {
-            return FerryRepository.GetFerrys();
-        }
+            return FerryRepository.GetFerryList();
+        } 
 
         public List<Passenger> GetPassengers(Ferry ferry)
         {

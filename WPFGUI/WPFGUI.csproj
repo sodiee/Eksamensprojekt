@@ -64,6 +64,9 @@
     <Compile Include="ShowCarsOnFerry.xaml.cs">
       <DependentUpon>ShowCarsOnFerry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowFerryProfit.xaml.cs">
+      <DependentUpon>ShowFerryProfit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowPassengersWindow.xaml.cs">
       <DependentUpon>ShowPassengersWindow.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ShowCarsOnFerry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowFerryProfit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

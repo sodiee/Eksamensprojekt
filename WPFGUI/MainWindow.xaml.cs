@@ -61,7 +61,7 @@ namespace WPFGUI
         private void EditFerryBtn_Click(object sender, RoutedEventArgs e)
         {
             Ferry temp = (Ferry)FerryList.SelectedItem;
-            ferry = new Ferry(temp.FerryID, FerryNameTxt.Text, temp.MaxNumberOfPassengers, temp.MaxNumberOfCars, temp.Cars);
+            ferry = new Ferry(temp.FerryID, FerryNameTxt.Text, temp.MaxNumberOfPassengers, temp.MaxNumberOfCars, temp.PricePassengers, temp.PriceCars, (List<Passenger>)temp.Passengers, temp.Cars);
             ferryBLL.UpdateFerry(ferry);
         }
 
@@ -143,6 +143,20 @@ namespace WPFGUI
             foreach (var ferry in ferryBLL.GetFerryList())
             {
                 FerryList.Items.Add(ferry);
+            }
+        }
+
+        private void FerryProfitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (FerryList.SelectedItem != null)
+            {
+                Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
+                ShowFerryProfit sfp = new ShowFerryProfit(selectedFerry);
+                sfp.Show();
+            }
+            else
+            {
+                MessageBox.Show("Vælg en færge");
             }
         }
     }

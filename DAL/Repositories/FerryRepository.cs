@@ -21,6 +21,38 @@ namespace DAL.Repositories
             }
         }
 
+        public static List<DTO.Model.Ferry> GetFerryList()
+        {
+            using (DataBaseContext context = new DataBaseContext())
+            {
+                List<DTO.Model.Ferry> result = new List<DTO.Model.Ferry>();
+                foreach (var ferry in context.Ferries)
+                {
+                    var dtoFerry = FerryMapper.Map(ferry);
+                    dtoFerry.Passengers = GetPassengers(dtoFerry);
+                    result.Add(dtoFerry);
+                }
+                return result;
+            }
+        }
+
+        public static List<DTO.Model.Passenger> GetPassengers(DTO.Model.Ferry ferry)
+        {
+            using (var ferryContext = new DataBaseContext())
+            {
+                List<DTO.Model.Passenger> resList = new List<DTO.Model.Passenger>();
+                var passengersOnFerry = (from f in ferryContext.Ferries
+                                         where f.FerryID == ferry.FerryID
+                                         from passenger in f.Passengers
+                                         select passenger).ToList();
+                foreach (var passengers in passengersOnFerry)
+                {
+                    resList.Add(PassengerMapper.Map(passengers));
+                }
+                return resList;
+            }
+        }
+
         public static void AddFerry(DTO.Model.Ferry færge)
         {
             using (DataBaseContext context = new DataBaseContext())
@@ -43,22 +75,7 @@ namespace DAL.Repositories
             }
         }
 
-        public static List<DTO.Model.Passenger> GetPassengers(DTO.Model.Ferry ferry)
-        {
-            using (var ferryContext = new DataBaseContext())
-            {
-                List<DTO.Model.Passenger> resList = new List<DTO.Model.Passenger>();
-                var passengersOnFerry = (from f in ferryContext.Ferries
-                                         where f.FerryID == ferry.FerryID
-                                         from passenger in f.Passengers
-                                         select passenger).ToList();
-                foreach (var passengers in passengersOnFerry)
-                {
-                    resList.Add(PassengerMapper.Map(passengers));
-                }
-                return resList;
-            }
-        }
+       
 
         public static void UpdateFerry(DTO.Model.Ferry dtoFerry)
         {

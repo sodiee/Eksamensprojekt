@@ -13,6 +13,7 @@ namespace DAL
         public string Gender { get; set; }
         public int Age { get; set; }
         public DateTime Birthday { get; set; }
+        public int FerryID { get; set; }
 
         public Passenger() { }
 
