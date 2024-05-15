@@ -4,6 +4,7 @@ using DAL.Model;
 using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,9 +37,32 @@ namespace DAL.Repositories
             using (DataBaseContext context = new DataBaseContext())
             {
                 Passenger pToRemove = PassengerMapper.Map(GetPassenger(passenger.PassengerID));
+                context.Passengers.Attach(pToRemove);
                 context.Passengers.Remove(pToRemove);
 
                 context.SaveChanges ();
+            }
+        }
+
+        public static void UpdatePassenger(DTO.Model.Passenger dtoPassenger)
+        {
+            using (DataBaseContext context = new DataBaseContext())
+            {
+                Passenger passengerToUpdate = context.Passengers.Find(dtoPassenger.PassengerID);
+
+                if (passengerToUpdate != null)
+                {
+                    passengerToUpdate.Name = dtoPassenger.Name;
+                    passengerToUpdate.Gender = dtoPassenger.Gender;
+                    passengerToUpdate.Age = dtoPassenger.Age;
+                    passengerToUpdate.Birthday = dtoPassenger.Birthday;
+                }
+                else
+                {
+                    throw new DbUpdateException();
+                }
+
+                context.SaveChanges();
             }
         }
 

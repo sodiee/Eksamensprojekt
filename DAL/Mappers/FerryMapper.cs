@@ -23,8 +23,7 @@ namespace DAL.Mappers
 
             foreach (var DALCar in ferry.Cars)
             {
-                ferryCars.Add(new DTO.Model.Car(new DTO.Model.Passenger(DALCar.Driver.Name, DALCar.Driver.Gender, DALCar.Driver.Age, DALCar.Driver.Birthday), 
-                    DALCar.NumberOfPassengers, DALCar.Name, DALCar.Model, DALCar.LicensePlate));
+                ferryCars.Add(new DTO.Model.Car(DALCar.NumberOfPassengers, DALCar.Name, DALCar.Model, DALCar.LicensePlate));
             }
 
             return new DTO.Model.Ferry(
@@ -52,7 +51,7 @@ namespace DAL.Mappers
 
             foreach (var DTObil in ferry.Cars)
             {
-                ferryCars.Add(new DAL.Model.Car(new Passenger(DTObil.Driver.Name, DTObil.Driver.Gender, DTObil.Driver.Age, DTObil.Driver.Birthday),
+                ferryCars.Add(new DAL.Model.Car(
                     DTObil.NumberOfPassengers, DTObil.Name, DTObil.Model, DTObil.LicensePlate));
             }
 

@@ -39,9 +39,10 @@ namespace WPFGUI
 
         private void AddCarBtn_Click(object sender, RoutedEventArgs e)
         {
-            carToAdd = new Car((Passenger)CarDriverCboBox.SelectedItem, int.Parse(CarNumberOfPassengersTxt.Text), CarNameTxt.Text, CarModelTxt.Text, CarLicensePlateTxt.Text);
+            carToAdd = new Car(CarNameTxt.Text, CarModelTxt.Text, CarLicensePlateTxt.Text);
 
-            carBLL.AddCar(carToAdd);
+            //carBLL.AddCar(carToAdd);
+            ferryBLL.AddCarToFerry(ferry, carToAdd);
 
             MessageBox.Show("Bilen er tilføjet til færge");
 

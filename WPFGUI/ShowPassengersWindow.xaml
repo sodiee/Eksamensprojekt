@@ -19,7 +19,7 @@
         <TextBox x:Name="PassengerNameTxt" HorizontalAlignment="Left" Margin="609,157,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="PassengerIDTxt" HorizontalAlignment="Left" Margin="609,126,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="507,111,47,90"/>
-        <Button x:Name="UpdatePassengerBtn" Content="Rediger gæst" HorizontalAlignment="Left" Margin="655,283,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="UpdatePassengerBtn" Content="Rediger gæst" HorizontalAlignment="Left" Margin="655,283,0,0" VerticalAlignment="Top" Click="UpdatePassengerBtn_Click"/>
         <Button x:Name="ShowPassengersBtn" Content="Vis gæster" HorizontalAlignment="Left" Margin="35,339,0,0" VerticalAlignment="Top" Click="ShowPassengersBtn_Click"/>
         <DatePicker x:Name="PassengerBirthdayDaPi" HorizontalAlignment="Left" Margin="625,247,0,0" VerticalAlignment="Top"/>
         <Button x:Name="RemovePassengerBtn" Content="Fjern gæst" HorizontalAlignment="Left" Margin="358,314,0,0" VerticalAlignment="Top" Click="RemovePassengerBtn_Click"/>

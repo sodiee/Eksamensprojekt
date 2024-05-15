@@ -15,15 +15,15 @@ namespace DAL.Context
         protected override void Seed(DataBaseContext context)
         {
 
-            Ferry f1 = new Ferry("Molslinjen", 400, 100, 100, 120, new List<Passenger>(), new List<Car>());
-            Ferry f2 = new Ferry("Scandlines", 40, 10, 110, 130, new List<Passenger>(), new List<Car>());
-            Ferry f3 = new Ferry("Stenaline", 200, 50, 130, 150, new List<Passenger>(), new List<Car>());
+            Ferry f1 = new Ferry("Molslinjen", 400, 100, 99, 197, new List<Passenger>(), new List<Car>());
+            Ferry f2 = new Ferry("Scandlines", 40, 10, 99, 197, new List<Passenger>(), new List<Car>());
+            Ferry f3 = new Ferry("Stenaline", 200, 50, 99, 197, new List<Passenger>(), new List<Car>());
 
             Passenger passenger = new Passenger("Mathias", "Dreng", 23, new DateTime(2001, 2, 17));
 
-            Car car = new Car(null, 0, "Mazda", "3", "AM12345");
+            Car car = new Car("Mazda", "3", "AM12345");
 
-            car.Driver = passenger;
+            car.Passengers.Add(passenger);
             f1.Passengers.Add(passenger);
             f1.Cars.Add(car);
 

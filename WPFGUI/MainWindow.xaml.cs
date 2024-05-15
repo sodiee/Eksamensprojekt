@@ -53,15 +53,17 @@ namespace WPFGUI
 
                 FerryIDTxt.Text = ferry.FerryID.ToString();
                 FerryNameTxt.Text = ferry.Name;
-                FerryNumberOfPassengersTxt.Text = ferry.Passengers.Count.ToString();
-                FerryNumberOfCarsTxt.Text = ferry.Cars.Count.ToString();
+                FerryNumberOfPassengersTxt.Text = ferry.MaxNumberOfPassengers.ToString();
+                FerryNumberOfCarsTxt.Text = ferry.MaxNumberOfCars.ToString();
+                FerryPriceCarsTxt.Text = ferry.PriceCars.ToString();
+                FerryPricePassengersTxt.Text = ferry.PricePassengers.ToString();
             }
         }
 
         private void EditFerryBtn_Click(object sender, RoutedEventArgs e)
         {
             Ferry temp = (Ferry)FerryList.SelectedItem;
-            ferry = new Ferry(temp.FerryID, FerryNameTxt.Text, temp.MaxNumberOfPassengers, temp.MaxNumberOfCars, temp.PricePassengers, temp.PriceCars, (List<Passenger>)temp.Passengers, temp.Cars);
+            ferry = new Ferry(temp.FerryID, FerryNameTxt.Text, int.Parse(FerryNumberOfPassengersTxt.Text), int.Parse(FerryNumberOfCarsTxt.Text), int.Parse(FerryPricePassengersTxt.Text), int.Parse(FerryPriceCarsTxt.Text), (List<Passenger>)temp.Passengers, (List<Car>)temp.Cars);
             ferryBLL.UpdateFerry(ferry);
         }
 
@@ -105,7 +107,16 @@ namespace WPFGUI
 
         private void ShowCarsOnFerryBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (FerryList.SelectedItem != null)
+            {
+                Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
+                ShowCarsOnFerry scf = new ShowCarsOnFerry(selectedFerry);
+                scf.Show();
+            }
+            else
+            {
+                MessageBox.Show("Vælg en færge");
+            }
         }
 
         private void AddPassengerToSelectedFerryBtn_Click(object sender, RoutedEventArgs e)

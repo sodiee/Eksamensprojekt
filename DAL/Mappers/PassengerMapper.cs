@@ -13,6 +13,7 @@ namespace DAL.Mappers
         public static DTO.Model.Passenger Map(Passenger passenger)
         {
             return new DTO.Model.Passenger {
+                            CarID = passenger.CarID ?? null,
                             PassengerID = passenger.PassengerID,
                             FerryID = passenger.FerryID,
                             Name = passenger.Name,
@@ -26,6 +27,7 @@ namespace DAL.Mappers
         {
             return new Passenger
             {
+                CarID = passenger.CarID ?? null,
                 PassengerID = passenger.PassengerID,
                 FerryID = passenger.FerryID,
                 Name = passenger.Name,

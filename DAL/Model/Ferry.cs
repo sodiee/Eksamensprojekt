@@ -16,7 +16,7 @@ namespace DAL
         public int PricePassengers { get; set; }
         public int PriceCars { get; set; }
         public ICollection<Passenger> Passengers { get; set; }
-        public List<Car> Cars { get; set; }
+        public ICollection<Car> Cars { get; set; }
 
         public Ferry()
         {
@@ -48,17 +48,5 @@ namespace DAL
             this.Passengers = passengers;
             this.Cars = cars;
         }
-
-        public void AddPassenger(Passenger passenger)
-        {
-            Passengers.Add(passenger);
-        }
-
-        public void DeletePassenger(Passenger passenger)
-        {
-            Passengers.Remove(passenger);
-        }
-
-       
     }
 }

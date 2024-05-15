@@ -32,9 +32,19 @@ namespace BLL.BLL
             return FerryRepository.GetPassengers(ferry);
         }
 
+        public List<Car> GetCars(Ferry ferry)
+        {
+            return FerryRepository.GetCars(ferry);
+        }
+
         public void AddPassengerToFerry(Ferry ferry, Passenger passenger) 
         {
             FerryRepository.AddPassengerToFerry(ferry, passenger);
+        }
+
+        public void AddCarToFerry(Ferry ferry, Car car)
+        {
+            FerryRepository.AddCarToFerry(ferry, car);
         }
     }
 }

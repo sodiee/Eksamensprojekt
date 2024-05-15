@@ -22,7 +22,7 @@ namespace BLL.BLL
         }
         public void UpdatePassenger(Passenger passenger)
         {
-
+            PassengerRepository.UpdatePassenger(passenger);
         }
 
         public void RemovePassenger(Passenger passenger)

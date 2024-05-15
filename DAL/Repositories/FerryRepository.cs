@@ -8,6 +8,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DAL.Repositories
 {
@@ -25,14 +26,35 @@ namespace DAL.Repositories
         {
             using (DataBaseContext context = new DataBaseContext())
             {
-                List<DTO.Model.Ferry> result = new List<DTO.Model.Ferry>();
+                var ferrys = context.Ferries.Include(f => f.Passengers)
+                                            .Include(f => f.Cars).ToList();
+                var result = ferrys.Select(f => FerryMapper.Map(f)).ToList();
+                return result;
+                /*List<DTO.Model.Ferry> result = new List<DTO.Model.Ferry>();
                 foreach (var ferry in context.Ferries)
                 {
                     var dtoFerry = FerryMapper.Map(ferry);
                     dtoFerry.Passengers = GetPassengers(dtoFerry);
                     result.Add(dtoFerry);
                 }
-                return result;
+                return result;*/
+            }
+        }
+
+        public static List<DTO.Model.Car> GetCars(DTO.Model.Ferry ferry)
+        {
+            using (var ferryContext = new DataBaseContext())
+            {
+                List<DTO.Model.Car> resList = new List<DTO.Model.Car>();
+                var carsOnFerry = (from fc in ferryContext.Ferries
+                                   where fc.FerryID == ferry.FerryID
+                                   from car in fc.Cars
+                                   select car).ToList();
+                foreach (var car in carsOnFerry)
+                {
+                    resList.Add(CarMapper.Map(car));
+                }
+                return resList;
             }
         }
 
@@ -110,5 +132,16 @@ namespace DAL.Repositories
                 context.SaveChanges();
             }
            }
+
+        public static void AddCarToFerry(DTO.Model.Ferry ferry, DTO.Model.Car car)
+        {
+            using (DataBaseContext context = new DataBaseContext())
+            {
+                Ferry temp = context.Ferries.Find(ferry.FerryID);
+                temp.Cars.Add(CarMapper.Map(car));
+
+                context.SaveChanges();
+            }
+        }
     }
 }

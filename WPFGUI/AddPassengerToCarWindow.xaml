@@ -1,0 +1,14 @@
+﻿<Window x:Class="WPFGUI.AddPassengerToCarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFGUI"
+        mc:Ignorable="d"
+        Title="AddPassengerToCarWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="PassengersList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="29,33,347,184" Loaded="PassengersList_Loaded"/>
+        <Button x:Name="AddPassengerToCarBtn" Content="Tilføj passager til bil" HorizontalAlignment="Center" Margin="0,255,0,0" VerticalAlignment="Top" Click="AddPassengerToCarBtn_Click"/>
+
+    </Grid>
+</Window>

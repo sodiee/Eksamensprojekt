@@ -8,40 +8,49 @@ namespace DTO.Model
 {
     public class Car
     {
-        private List<Passenger> passengers = new List<Passenger>();
         public int CarID { get; set; }
-        public Passenger Driver { get; set; }
+        //public Passenger Driver { get; set; }
         public int NumberOfPassengers { get; set; }
-        public List<Passenger> Passenger { get { return passengers; } set { } }
+        public ICollection<Passenger> Passengers { get; set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public string LicensePlate { get; set; }
+        //public int PassengerID { get; set; }
+        public int FerryID { get; set; }
 
-        public Car() { }
-
-        public Car(Passenger driver, int numberOfPassengers, string name, string model, string licensePlate)
+        public Car()
         {
-            this.Driver = driver;
-            this.NumberOfPassengers = numberOfPassengers;
-            this.passengers = new List<Passenger>();
-            this.Name = name;
-            this.Model = model;
-            this.LicensePlate = licensePlate;
-
-            passengers.Add(driver);
+            Passengers = new List<Passenger>();
         }
 
-        public Car(int id, Passenger driver, int numberOfPassengers, string name, string model, string licensePlate)
+        public Car(string name, string model, string licensePlate)
         {
-            this.CarID = id;
-            this.Driver = driver;
-            this.NumberOfPassengers = numberOfPassengers;
-            this.passengers = new List<Passenger>();
+            //this.Driver = driver;
+            this.Passengers = new List<Passenger>();
+            this.NumberOfPassengers = Passengers.Count;
             this.Name = name;
             this.Model = model;
             this.LicensePlate = licensePlate;
 
-            passengers.Add(driver);
+            //Passengers.Add(driver);
+        }
+
+        public Car(int id, string name, string model, string licensePlate)
+        {
+            this.CarID = id;
+            //this.Driver = driver;
+            this.Passengers = new List<Passenger>();
+            this.NumberOfPassengers = Passengers.Count;
+            this.Name = name;
+            this.Model = model;
+            this.LicensePlate = licensePlate;
+
+            //Passengers.Add(driver);
+        }
+
+        public override string ToString()
+        {
+            return Name + " " + Model + " : " + LicensePlate;
         }
     }
 }

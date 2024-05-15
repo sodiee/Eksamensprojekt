@@ -21,9 +21,24 @@ namespace BLL.BLL
             //valider car
             CarRepository.AddCar(car);
         }
-        public void EditEmployee(Car car)
+        public void UpdateCar(Car car)
         {
+            CarRepository.UpdateCar(car);
+        }
 
+        public void AddPassengerToCar(Car car, Passenger passenger)
+        {
+            CarRepository.AddPassengerToCar(car, passenger);
+        }
+
+        public List<Passenger> GetPassengersInCar(Car car)
+        {
+            return CarRepository.GetPassengers(car);
+        }
+
+        public void RemoveCar(Car selectedCar)
+        {
+            CarRepository.RemoveCar(selectedCar);
         }
     }
 }

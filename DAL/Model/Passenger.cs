@@ -14,6 +14,7 @@ namespace DAL
         public int Age { get; set; }
         public DateTime Birthday { get; set; }
         public int FerryID { get; set; }
+        public int? CarID { get; set; }
 
         public Passenger() { }
 

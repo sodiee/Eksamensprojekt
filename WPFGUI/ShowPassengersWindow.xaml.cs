@@ -55,7 +55,6 @@ namespace WPFGUI
 
         private void RemovePassengerBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Få den valgte passager fra ListBox'en eller et andet sted i dit GUI
             Passenger selectedPassenger = (Passenger)PassengersOnFerryList.SelectedItem;
 
             if (selectedPassenger != null)
@@ -78,6 +77,13 @@ namespace WPFGUI
             {
                 PassengersOnFerryList.Items.Add(passenger);
             }
+        }
+
+        private void UpdatePassengerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Passenger selectedPassenger = (Passenger)PassengersOnFerryList.SelectedItem;
+            passengerToUpdate = new Passenger(selectedPassenger.PassengerID, PassengerNameTxt.Text, PassengerGenderTxt.Text, int.Parse(PassengerAgeTxt.Text), PassengerBirthdayDaPi.SelectedDate.Value.Date);
+            passengerBLL.UpdatePassenger(passengerToUpdate);
         }
     }
 }

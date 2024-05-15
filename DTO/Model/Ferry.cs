@@ -16,7 +16,7 @@ namespace DTO.Model
         public int PricePassengers { get; set; }
         public int PriceCars { get; set; }
         public ICollection<Passenger> Passengers { get; set; }
-        public List<Car> Cars { get; set; }
+        public ICollection<Car> Cars { get; set; }
 
         public Ferry() {
             Passengers = new List<Passenger>();
