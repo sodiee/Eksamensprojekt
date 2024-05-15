@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace WebGUI
+namespace WebAPI
 {
     public class RouteConfig
     {
@@ -16,14 +16,9 @@ namespace WebGUI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-    name: "FerryDetails",
-    url: "Ferry/Details/{id}",
-    defaults: new { controller = "Ferry", action = "Details", id = UrlParameter.Optional }
-);
         }
     }
 }
+

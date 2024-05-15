@@ -1,0 +1,42 @@
+﻿@model DTO.Model.Ferry
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div>
+    @using (Html.BeginForm("Edit", "Ferry", FormMethod.Post))
+    {
+        <div>
+            @Html.LabelFor(model => model.FerryID)
+            @Html.EditorFor(model => model.FerryID)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.MaxNumberOfCars)
+            @Html.EditorFor(model => model.MaxNumberOfCars)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.MaxNumberOfPassengers)
+            @Html.EditorFor(model => model.MaxNumberOfPassengers)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.PricePassengers)
+            @Html.EditorFor(model => model.PricePassengers)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.PriceCars)
+            @Html.EditorFor(model => model.PriceCars)
+        </div>
+        <input type="submit" value="Opdater færge" />
+    }
+    <br />
+</div>
+<p>
+    @Html.ActionLink("Tilbage", "Details", new { id = Model.FerryID }) |
+</p>

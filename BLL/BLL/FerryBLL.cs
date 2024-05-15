@@ -46,5 +46,15 @@ namespace BLL.BLL
         {
             FerryRepository.AddCarToFerry(ferry, car);
         }
+
+        public void RemoveFerry(int id)
+        {
+            FerryRepository.RemoveFerry(GetFerry(id));
+        }
+
+        public void RemoveAllFerries()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

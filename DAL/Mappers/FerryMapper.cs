@@ -14,16 +14,22 @@ namespace DAL.Mappers
         {
             List<DTO.Model.Passenger> ferryPassengers = new List<DTO.Model.Passenger>();
 
-            foreach (var DALPassenger in ferry.Passengers)
+            if (ferry.Passengers.Count != 0)
             {
-                ferryPassengers.Add(new DTO.Model.Passenger(DALPassenger.Name, DALPassenger.Gender, DALPassenger.Age, DALPassenger.Birthday));
+                foreach (var DALPassenger in ferry.Passengers)
+                {
+                    ferryPassengers.Add(new DTO.Model.Passenger(DALPassenger.Name, DALPassenger.Gender, DALPassenger.Age, DALPassenger.Birthday));
+                }
             }
 
             List<DTO.Model.Car> ferryCars = new List<DTO.Model.Car>();
 
-            foreach (var DALCar in ferry.Cars)
+            if (ferry.Cars.Count != 0)
             {
-                ferryCars.Add(new DTO.Model.Car(DALCar.NumberOfPassengers, DALCar.Name, DALCar.Model, DALCar.LicensePlate));
+                foreach (var DALCar in ferry.Cars)
+                {
+                    ferryCars.Add(new DTO.Model.Car(DALCar.NumberOfPassengers, DALCar.Name, DALCar.Model, DALCar.LicensePlate));
+                }
             }
 
             return new DTO.Model.Ferry(
@@ -42,17 +48,22 @@ namespace DAL.Mappers
         {
             List<Passenger> ferryPassengers = new List<Passenger>();
 
-            foreach (var DTOPassenger in ferry.Passengers)
+            if (ferry.Passengers.Count != 0)
             {
-                ferryPassengers.Add(new Passenger(DTOPassenger.Name, DTOPassenger.Gender, DTOPassenger.Age, DTOPassenger.Birthday));
+                foreach (var DTOPassenger in ferry.Passengers)
+                {
+                    ferryPassengers.Add(new Passenger(DTOPassenger.Name, DTOPassenger.Gender, DTOPassenger.Age, DTOPassenger.Birthday));
+                }
             }
-
             List<DAL.Model.Car> ferryCars = new List<DAL.Model.Car>();
 
-            foreach (var DTObil in ferry.Cars)
+            if (ferry.Cars.Count != 0)
             {
-                ferryCars.Add(new DAL.Model.Car(
-                    DTObil.NumberOfPassengers, DTObil.Name, DTObil.Model, DTObil.LicensePlate));
+                foreach (var DTObil in ferry.Cars)
+                {
+                    ferryCars.Add(new DAL.Model.Car(
+                        DTObil.NumberOfPassengers, DTObil.Name, DTObil.Model, DTObil.LicensePlate));
+                }
             }
 
             return new Ferry(

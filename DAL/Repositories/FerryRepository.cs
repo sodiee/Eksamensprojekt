@@ -26,18 +26,11 @@ namespace DAL.Repositories
         {
             using (DataBaseContext context = new DataBaseContext())
             {
-                var ferrys = context.Ferries.Include(f => f.Passengers)
+                    var ferrys = context.Ferries.Include(f => f.Passengers)
                                             .Include(f => f.Cars).ToList();
                 var result = ferrys.Select(f => FerryMapper.Map(f)).ToList();
+
                 return result;
-                /*List<DTO.Model.Ferry> result = new List<DTO.Model.Ferry>();
-                foreach (var ferry in context.Ferries)
-                {
-                    var dtoFerry = FerryMapper.Map(ferry);
-                    dtoFerry.Passengers = GetPassengers(dtoFerry);
-                    result.Add(dtoFerry);
-                }
-                return result;*/
             }
         }
 
@@ -97,25 +90,39 @@ namespace DAL.Repositories
             }
         }
 
-       
+        public static void RemoveFerry(DTO.Model.Ferry ferry)
+        {
+            using (DataBaseContext context = new DataBaseContext())
+            {
+                Ferry fToRemove = FerryMapper.Map(GetFerry(ferry.FerryID));
+                context.Ferries.Attach(fToRemove);
+                context.Ferries.Remove(fToRemove);
+
+                context.SaveChanges();
+            }
+        }
+
+
 
         public static void UpdateFerry(DTO.Model.Ferry dtoFerry)
         {
             using (DataBaseContext context = new DataBaseContext())
             {
-                Ferry ferryToEdit = context.Ferries.Find(dtoFerry.FerryID);
-                
-                if (ferryToEdit != null)
-                {
-                    ferryToEdit.Name = dtoFerry.Name;
-                }
-                else
-                {
-                    throw new DbUpdateException();
-                }
 
-                context.SaveChanges();
-            }
+                    Ferry ferryToEdit = context.Ferries.Find(dtoFerry.FerryID);
+
+                    if (ferryToEdit != null)
+                    {
+                        ferryToEdit.Name = dtoFerry.Name;
+                    }
+                    else
+                    {
+                        throw new DbUpdateException();
+                    }
+
+                    context.SaveChanges();
+                
+                }
         }
         
         public static void AddPassengerToFerry(DTO.Model.Ferry ferry, DTO.Model.Passenger passenger)

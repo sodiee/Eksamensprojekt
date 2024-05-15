@@ -17,6 +17,10 @@ namespace DTO.Model
         public int PriceCars { get; set; }
         public ICollection<Passenger> Passengers { get; set; }
         public ICollection<Car> Cars { get; set; }
+        public double TotalPricePassengers{get{return Passengers.Count * PricePassengers;}}
+        public double TotalPriceCars{get { return Cars.Count * PriceCars;}}
+        public double TotalPrice { get { return TotalPriceCars + TotalPricePassengers;} }
+
 
         public Ferry() {
             Passengers = new List<Passenger>();
@@ -46,16 +50,6 @@ namespace DTO.Model
 
             this.Passengers = passengers;
             this.Cars = cars;
-        }
-
-        public void AddPassenger(Passenger passenger)
-        {
-            Passengers.Add(passenger);
-        }
-
-        public void DeletePassenger(Passenger passenger)
-        {
-            Passengers.Remove(passenger);
         }
 
         public override string ToString()
