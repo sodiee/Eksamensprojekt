@@ -1,63 +1,64 @@
 ﻿using BLL.BLL;
 using DTO.Model;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
-    public class FerryController : ApiController
+    public class CarController : ApiController
     {
         FerryBLL ferryBLL = new FerryBLL();
+        CarBLL carBLL = new CarBLL();
 
         [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Ferry GetFerry(int id)
+        public Car GetCar(int id)
         {
-            return ferryBLL.GetFerry(id);
+            return carBLL.GetCar(id);
         }
 
         [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public List<Ferry> GetAllFerries()
+        public List<Car> GetAllCarsOnFerry(int id)
         {
-            return ferryBLL.GetFerryList();
+            Ferry ferry = ferryBLL.GetFerry(id);
+            return ferryBLL.GetCars(ferry);
         }
 
         [HttpPost]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Ferry AddFerry([FromUri] Ferry newFerry)
+        public Car AddCar(int id,[FromUri] Car newCar)
         {
-            ferryBLL.AddFerry(newFerry);
+            Ferry ferry = ferryBLL.GetFerry(id);
+            ferryBLL.AddCarToFerry(ferry, newCar);
 
-            return newFerry;
+            return newCar;
         }
 
         [HttpDelete]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult DeleteFerry(int id)
+        public IHttpActionResult DeleteCar(int id)
         {
-            ferryBLL.RemoveFerry(id);
+            Car car = carBLL.GetCar(id);
+            carBLL.RemoveCar(car);
 
             return Ok();
         }
 
         [HttpPut]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Ferry UpdateFerry(int id, [FromBody] Ferry updatedFerry)
+        public Car UpdateCar(int id, [FromUri] Car updatedCar)
         {
-            updatedFerry.FerryID = id;
+            updatedCar.CarID = id;
 
-            ferryBLL.UpdateFerry(updatedFerry);
+            carBLL.UpdateCar(updatedCar);
 
-            return updatedFerry;
+            return updatedCar;
         }
     }
 }
