@@ -10,45 +10,113 @@ namespace WebGUI.Controllers
 {
     public class CarController : Controller
     {
-        /*private CarBLL carBLL = new CarBLL();
+        FerryBLL ferryBLL = new FerryBLL();
+        CarBLL carBLL = new CarBLL();
 
-        // GET: Car/AddPassenger
         [HttpGet]
-        public ActionResult AddPassenger()
+        public ActionResult AddCar(int ferryId)
         {
-            // Hent en liste over alle biler for at vise dem i dropdown-listen
-            var cars = carBLL.GetAllCars();
-            ViewBag.Cars = cars;
-            return View();
+            var ferry = ferryBLL.GetFerry(ferryId);
+            if (ferry == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.Ferry = ferry;
+            return View("AddCar");
         }
 
-        // POST: Car/AddPassengerToCar
         [HttpPost]
-        public ActionResult AddPassengerToCar(Passenger passenger)
+        public ActionResult AddCar(int ferryId, Car car)
+        {
+            try
+            {
+                if (ferryId == 0)
+                {
+                    return HttpNotFound();
+                }
+                var ferry = ferryBLL.GetFerry(ferryId);
+                if (ferry == null)
+                {
+                    return HttpNotFound();
+                }
+
+                //carBLL.AddCar(car);
+
+                // Tilføj bilen til færgen
+                ferryBLL.AddCarToFerry(ferry, car);
+
+                return RedirectToAction("Details", "Ferry", new { id = ferryId }); // Redirect to home or any other appropriate action
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "An error occurred while adding the car: " + ex.Message);
+                return View(car);
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            var car = carBLL.GetCar(id);
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Hent passagererne for bilen
+            var passengers = carBLL.GetPassengersInCar(car);
+
+            // Gem passagererne i en ViewBag-variabel
+            ViewBag.Passengers = passengers;
+
+            return View(car);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var car = carBLL.GetCar(id);
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+            return View(car);
+        }
+        [HttpPost]
+        public ActionResult Edit(Car car)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Tilføj passageren til den valgte bil
-                    int carID = passenger.CarID; // Hent bilens ID fra formularen
-                    Car car = carBLL.GetCar(carID); // Hent bilen fra BLL
-                    carBLL.AddPassengerToCar(car, passenger);
-
-                    // Send brugeren tilbage til en passende visning (f.eks. oversigt over biler eller en bekræftelsesside)
-                    return RedirectToAction("Index", "Car");
+                    carBLL.UpdateCar(car);
+                    return RedirectToAction("Details", new { id = car.CarID });
                 }
                 catch (Exception ex)
                 {
-                    // Håndter eventuelle fejl, f.eks. ved visning af en fejlmeddelelse
-                    ModelState.AddModelError("", "An error occurred while adding the passenger to the car: " + ex.Message);
+                    ModelState.AddModelError("", "An error occurred while updating the ferry: " + ex.Message);
                 }
             }
+            return View(car);
+        }
 
-            // Hvis der opstår en valideringsfejl, vis formularen igen med fejlmeddelelser
-            var cars = carBLL.GetAllCars();
-            ViewBag.Cars = cars;
-            return View("AddPassenger", passenger);
-        }*/
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var car = carBLL.GetCar(id);
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+            return View(car);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int id, int ferryId)
+        {
+            var cToDelete = carBLL.GetCar(id);
+            carBLL.RemoveCar(cToDelete);
+            return RedirectToAction("Details", "Ferry", new { id = ferryId });
+        }
     }
 }

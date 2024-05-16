@@ -1,7 +1,7 @@
 ﻿@model DTO.Model.Ferry
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Ferry Details";
 }
 
 <h2>Ferry Details</h2>
@@ -25,77 +25,34 @@
     <br />
 </div>
 
-<h4>Gæster på færge</h4>
-
+<h4>Passengers on Ferry</h4>
 <ul>
     @foreach (var passenger in ViewBag.Passengers)
     {
-        <li>@passenger.Name - @passenger.Age - ID: @passenger.PassengerID</li>
+        <li>@Html.ActionLink($"{passenger.Name} - {passenger.Age} - ID: {passenger.PassengerID}", "Details", "Passenger", new { id = passenger.PassengerID }, null)</li>
     }
 </ul>
 
 <div>
-    <h4>Tilføj ny passager</h4>
-    @using (Html.BeginForm("AddNewPassenger", "Ferry", FormMethod.Post))
-    {
-        <input type="hidden" name="id" value="@Model.FerryID" />
-
-        <div>
-            <label for="Name">Name:</label>
-            <input type="text" name="Name" />
-        </div>
-        <div>
-            <label for="Gender">Gender:</label>
-            <input type="text" name="Gender" />
-        </div>
-        <div>
-            <label for="Age">Age:</label>
-            <input type="text" name="Age" />
-        </div>
-        <div>
-            <label for="Birthday">Birthday:</label>
-            <input type="date" name="Birthday" id="Birthday" />
-        </div>
-        <div>
-            <label for="CarId">Choose a car:</label>
-            <select name="CarId">
-                @foreach (var car in ViewBag.Cars)
-                {
-                    <option value="@car.CarID">@car.Name - @car.Model</option>
-                }
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Tilføj passager</button>
-    }
+    @Html.ActionLink("Tilføj passager", "AddPassenger", "Passenger", new { ferryId = Model.FerryID }, null)
 </div>
 
-<br/>
+<br />
 
 <div>
-    <h4>Tilføj ny bil</h4>
-    @using (Html.BeginForm("AddNewCar", "Ferry", FormMethod.Post))
-    {
-        <input type="hidden" name="id" value="@Model.FerryID" />
+    <h4>Cars on Ferry</h4>
+    <ul>
+        @foreach (var car in ViewBag.Cars)
+        {
+            <li>@Html.ActionLink($"{car.Name} - {car.Model} - License Plate: {car.LicensePlate}", "Details", "Car", new { id = car.CarID }, null)</li>
+        }
+    </ul>
 
-        <div>
-            <label for="Name">Navn:</label>
-            <input type="text" name="Name" />
-        </div>
-        <div>
-            <label for="Model">Model:</label>
-            <input type="text" name="Model" />
-        </div>
-        <div>
-            <label for="Licenseplate">Nummerplade:</label>
-            <input type="text" name="Licenseplate" />
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Tilføj bil</button>
-    }
+    @Html.ActionLink("Tilføj bil", "AddCar", "Car", new { ferryId = Model.FerryID }, null)
 </div>
 
 <p>
-   @Html.ActionLink("Tilbage til oversigten", "Index", FormMethod.Get)
-   @Html.ActionLink("Edit", "Edit", new { id = Model.FerryID }) |
-   @Html.ActionLink("Delete", "Delete", new { id = Model.FerryID })
+    @Html.ActionLink("Back to Overview", "Index", "Ferry")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FerryID }, null)
+    @Html.ActionLink("Delete", "Delete", new { id = Model.FerryID }, null)
 </p>

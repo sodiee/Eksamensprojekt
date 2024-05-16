@@ -104,6 +104,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\FerryController.cs" />
+    <Compile Include="Controllers\PassengerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -121,6 +122,14 @@
     <Content Include="Views\Ferry\Edit.cshtml" />
     <Content Include="Views\Ferry\Delete.cshtml" />
     <Content Include="Views\Ferry\_AddPassager.cshtml" />
+    <Content Include="Views\Car\AddCar.cshtml" />
+    <Content Include="Views\Passenger\AddPassenger.cshtml" />
+    <Content Include="Views\Passenger\Details.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Passenger\Edit.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Passenger\Delete.cshtml" />
+    <Content Include="Views\Car\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -131,7 +140,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Car\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

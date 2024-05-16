@@ -1,0 +1,16 @@
+﻿@model DTO.Model.Passenger
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<p>Er du sikker på, at du vil slette passageren med ID @Model.PassengerID og navn @Model.Name?</p>
+
+@using (Html.BeginForm("DeleteConfirmed", "Passenger", new { id = Model.PassengerID, ferryId = Model.FerryID }, FormMethod.Post))
+{
+    <input type="submit" value="Slet" class="btn btn-danger" />
+    @Html.ActionLink("Annuller", "Details", new { id = Model.PassengerID }, new { @class = "btn btn-default" })
+}
+}
