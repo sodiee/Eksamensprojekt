@@ -36,7 +36,15 @@ namespace WPFGUI
         {
             Passenger selectedPassenger = (Passenger)PassengersList.SelectedItem;
             try
-            { 
+            {
+                car.Passengers = carBLL.GetPassengersInCar(car);
+
+                if (car.Passengers.Count >= 5)
+                {
+                    MessageBox.Show("Der kan kun være 5 gæster i en bil");
+                    return;
+                }
+
                 carBLL.AddPassengerToCar(car, selectedPassenger);
 
                 MessageBox.Show("Gæst tilføjet til bil");
@@ -47,7 +55,7 @@ namespace WPFGUI
             {
                 MessageBox.Show(ex.Message);
             }
-            }
+        }
 
         private void PassengersList_Loaded(object sender, RoutedEventArgs e)
         {

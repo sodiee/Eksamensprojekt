@@ -1,7 +1,7 @@
 ﻿@model DTO.Model.Ferry
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit færge";
 }
 
 <h2>Edit</h2>
@@ -9,6 +9,7 @@
 <div>
     @using (Html.BeginForm("Edit", "Ferry", FormMethod.Post))
     {
+        @Html.HiddenFor(model => model.FerryID)
         <div>
             @Html.LabelFor(model => model.FerryID)
             @Html.DisplayFor(model => model.FerryID)
@@ -16,22 +17,27 @@
         <div>
             @Html.LabelFor(model => model.Name)
             @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
         <div>
             @Html.LabelFor(model => model.MaxNumberOfCars)
             @Html.EditorFor(model => model.MaxNumberOfCars)
+            @Html.ValidationMessageFor(model => model.MaxNumberOfCars)
         </div>
         <div>
             @Html.LabelFor(model => model.MaxNumberOfPassengers)
             @Html.EditorFor(model => model.MaxNumberOfPassengers)
+            @Html.ValidationMessageFor(model => model.MaxNumberOfPassengers)
         </div>
         <div>
             @Html.LabelFor(model => model.PricePassengers)
             @Html.EditorFor(model => model.PricePassengers)
+            @Html.ValidationMessageFor(model => model.PricePassengers)
         </div>
         <div>
             @Html.LabelFor(model => model.PriceCars)
             @Html.EditorFor(model => model.PriceCars)
+            @Html.ValidationMessageFor(model => model.PriceCars)
         </div>
         <input type="submit" value="Opdater færge" />
     }

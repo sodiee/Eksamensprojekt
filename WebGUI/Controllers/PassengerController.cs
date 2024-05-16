@@ -35,7 +35,11 @@ namespace WebGUI.Controllers
         {
             try
             {
-                var ferry = ferryBLL.GetFerry(ferryId);
+                ModelState.Clear();
+                /*if (ModelState.IsValid)
+                {
+                }*/
+                    var ferry = ferryBLL.GetFerry(ferryId);
                 if (ferry == null)
                 {
                     return HttpNotFound();
@@ -54,6 +58,7 @@ namespace WebGUI.Controllers
                 // Tilføj passageren til bilen
                 //carBLL.AddPassengerToCar(car, passenger);
                 return RedirectToAction("Details", "Ferry", new { id = ferryId });
+
             }
             catch (Exception ex)
             {

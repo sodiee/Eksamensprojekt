@@ -13,18 +13,22 @@
         <div>
             @Html.LabelFor(model => model.CarID)
             @Html.DisplayFor(model => model.CarID)
+            @Html.ValidationMessageFor(model => model.CarID)
         </div>
         <div>
             @Html.LabelFor(model => model.Name)
             @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
         <div>
             @Html.LabelFor(model => model.Model)
             @Html.EditorFor(model => model.Model)
+            @Html.ValidationMessageFor(model => model.Model)
         </div>
         <div>
             @Html.LabelFor(model => model.LicensePlate)
             @Html.EditorFor(model => model.LicensePlate)
+            @Html.ValidationMessageFor(model => model.LicensePlate)
         </div>
         <input type="submit" value="Opdater bil" />
     }

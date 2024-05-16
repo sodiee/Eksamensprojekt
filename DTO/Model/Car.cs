@@ -10,7 +10,6 @@ namespace DTO.Model
     public class Car
     {
         public int CarID { get; set; }
-        [MaxLength(5)]
         public int NumberOfPassengers { get; set; }
         public ICollection<Passenger> Passengers { get; set; }
         [Required]

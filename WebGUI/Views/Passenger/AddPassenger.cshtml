@@ -12,18 +12,22 @@
     <div>
         @Html.LabelFor(model => model.Name)
         @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
     </div>
     <div>
         @Html.LabelFor(model => model.Gender)
         @Html.EditorFor(model => model.Gender)
+        @Html.ValidationMessageFor(model => model.Gender)
     </div>
     <div>
         @Html.LabelFor(model => model.Age)
         @Html.EditorFor(model => model.Age)
+        @Html.ValidationMessageFor(model => model.Age)
     </div>
     <div>
         @Html.LabelFor(model => model.Birthday)
         @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.Birthday)
     </div>
     <div>
         <label for="CarId">Choose a car:</label>

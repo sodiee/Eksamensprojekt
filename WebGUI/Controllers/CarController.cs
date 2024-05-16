@@ -29,30 +29,35 @@ namespace WebGUI.Controllers
         [HttpPost]
         public ActionResult AddCar(int ferryId, Car car)
         {
-            try
+            ModelState.Clear();
+            if (ModelState.IsValid)
             {
-                if (ferryId == 0)
+                try
                 {
-                    return HttpNotFound();
+                    if (ferryId == 0)
+                    {
+                        return HttpNotFound();
+                    }
+                    var ferry = ferryBLL.GetFerry(ferryId);
+                    if (ferry == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    //carBLL.AddCar(car);
+
+                    // Tilføj bilen til færgen
+                    ferryBLL.AddCarToFerry(ferry, car);
+
+                    return RedirectToAction("Details", "Ferry", new { id = ferryId });
                 }
-                var ferry = ferryBLL.GetFerry(ferryId);
-                if (ferry == null)
+                catch (Exception ex)
                 {
-                    return HttpNotFound();
+                    ModelState.AddModelError("", "An error occurred while adding the car: " + ex.Message);
+                    return View(car);
                 }
-
-                //carBLL.AddCar(car);
-
-                // Tilføj bilen til færgen
-                ferryBLL.AddCarToFerry(ferry, car);
-
-                return RedirectToAction("Details", "Ferry", new { id = ferryId }); // Redirect to home or any other appropriate action
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "An error occurred while adding the car: " + ex.Message);
-                return View(car);
-            }
+            return RedirectToAction("Details", "Ferry", new { id = ferryId });
         }
 
         public ActionResult Details(int id)
@@ -85,6 +90,7 @@ namespace WebGUI.Controllers
         [HttpPost]
         public ActionResult Edit(Car car)
         {
+            ModelState.Clear();
             if (ModelState.IsValid)
             {
                 try
