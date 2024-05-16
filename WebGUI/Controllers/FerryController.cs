@@ -11,6 +11,7 @@ namespace WebGUI.Controllers
     public class FerryController : Controller
     {
         public FerryBLL ferryBLL = new FerryBLL();
+        CarBLL carBLL = new CarBLL();
 
         // GET: Ferry
         public ActionResult Index()
@@ -23,11 +24,13 @@ namespace WebGUI.Controllers
         {
             var ferry = ferryBLL.GetFerry(id);
             var passengers = ferryBLL.GetPassengers(ferry);
+            var cars = ferryBLL.GetCars(ferry);
             if (ferry == null)
             {
                 return HttpNotFound();
             }
             ViewBag.Passengers = passengers;
+            ViewBag.Cars = cars;
             return View(ferry);
         }
 
@@ -77,8 +80,18 @@ namespace WebGUI.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddPassenger(int id)
+        {
+            var ferry = ferryBLL.GetFerry(id);
+            if (ferry == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ferry);
+        }
+
         [HttpPost]
-        public ActionResult AddNewPassenger(int id, Passenger passenger)
+        public ActionResult AddNewPassenger(int id, Passenger passenger, int carId)
         {
             try
             {
@@ -87,19 +100,39 @@ namespace WebGUI.Controllers
                 {
                     return HttpNotFound();
                 }
+
                 ferryBLL.AddPassengerToFerry(ferry, passenger);
+
+                var car = carBLL.GetCar(carId);
+                if (car == null)
+                {
+                    return HttpNotFound();
+                }
+
+                //carBLL.AddPassengerToCar(car, passenger);
 
                 return RedirectToAction("Details", new { id = id });
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "An error occurred while adding the passenger: " + ex.Message);
+                ModelState.AddModelError("", "An error occurred while adding the passenger to the ferry and car: " + ex.Message);
                 return View("Details", id);
             }
         }
 
+
+        public ActionResult AddCar(int id)
+        {
+            var ferry = ferryBLL.GetFerry(id);
+            if (ferry == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ferry);
+        }
+
         [HttpPost]
-        public ActionResult AddNewCar(int id, Car car, Passenger passenger)
+        public ActionResult AddNewCar(int id, Car car)
         {
             try
             {
@@ -108,7 +141,7 @@ namespace WebGUI.Controllers
                 {
                     return HttpNotFound();
                 }
-                ferryBLL.AddPassengerToFerry(ferry, passenger);
+                ferryBLL.AddCarToFerry(ferry, car);
 
                 return RedirectToAction("Details", new { id = id });
             }

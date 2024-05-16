@@ -56,9 +56,18 @@
             <label for="Birthday">Birthday:</label>
             <input type="date" name="Birthday" id="Birthday" />
         </div>
+        <div>
+            <label for="CarId">Choose a car:</label>
+            <select name="CarId">
+                @foreach (var car in ViewBag.Cars)
+                {
+                    <option value="@car.CarID">@car.Name - @car.Model</option>
+                }
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Tilføj passager</button>
     }
-    </div>
+</div>
 
 <br/>
 
@@ -69,7 +78,7 @@
         <input type="hidden" name="id" value="@Model.FerryID" />
 
         <div>
-            <label for="Name">Name:</label>
+            <label for="Name">Navn:</label>
             <input type="text" name="Name" />
         </div>
         <div>
@@ -77,15 +86,16 @@
             <input type="text" name="Model" />
         </div>
         <div>
-            <label for="Nummerplade">Nummerplade:</label>
-            <input type="text" name="Nummerplade" />
+            <label for="Licenseplate">Nummerplade:</label>
+            <input type="text" name="Licenseplate" />
         </div>
+        
         <button type="submit" class="btn btn-primary">Tilføj bil</button>
     }
 </div>
 
-        <p>
-            @Html.ActionLink("Tilbage til oversigten", "Index", FormMethod.Get)
-            @Html.ActionLink("Edit", "Edit", new { id = Model.FerryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = Model.FerryID })
-        </p>
+<p>
+   @Html.ActionLink("Tilbage til oversigten", "Index", FormMethod.Get)
+   @Html.ActionLink("Edit", "Edit", new { id = Model.FerryID }) |
+   @Html.ActionLink("Delete", "Delete", new { id = Model.FerryID })
+</p>
