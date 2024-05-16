@@ -75,7 +75,9 @@ namespace DAL.Repositories
             using (DataBaseContext context = new DataBaseContext())
             {
                 DAL.Model.Car temp = context.Cars.Find(car.CarID);
-                temp.Passengers.Add(PassengerMapper.Map(passenger));
+                var passengerToAdd = context.Passengers.Find(passenger.PassengerID);
+                temp.Passengers.Add(passengerToAdd);
+                temp.NumberOfPassengers++;
 
                 context.SaveChanges();
             }

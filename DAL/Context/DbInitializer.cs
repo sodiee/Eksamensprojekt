@@ -24,6 +24,7 @@ namespace DAL.Context
             Car car = new Car("Mazda", "3", "AM12345");
 
             car.Passengers.Add(passenger);
+            car.NumberOfPassengers++;
             f1.Passengers.Add(passenger);
             f1.Cars.Add(car);
 

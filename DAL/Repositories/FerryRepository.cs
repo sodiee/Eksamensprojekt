@@ -114,7 +114,11 @@ namespace DAL.Repositories
                     if (ferryToEdit != null)
                     {
                         ferryToEdit.Name = dtoFerry.Name;
-                    }
+                    ferryToEdit.MaxNumberOfCars = dtoFerry.MaxNumberOfCars;
+                    ferryToEdit.MaxNumberOfPassengers = dtoFerry.MaxNumberOfPassengers;
+                    ferryToEdit.PriceCars = dtoFerry.PriceCars;
+                    ferryToEdit.PricePassengers = dtoFerry.PricePassengers;
+                }
                     else
                     {
                         throw new DbUpdateException();

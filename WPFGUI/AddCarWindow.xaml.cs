@@ -34,7 +34,7 @@ namespace WPFGUI
 
         private void AddCarBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (CarNameTxt.Text.Trim().Length > 0 || CarModelTxt.Text.Trim().Length > 0 || CarLicensePlateTxt.Text.Trim().Length > 0)
+            try
             {
                 carToAdd = new Car
                 {
@@ -49,19 +49,10 @@ namespace WPFGUI
                 MessageBox.Show("Bilen er tilføjet til færge");
 
                 this.Close();
-            } else
+            } catch (Exception ex)
             {
-                MessageBox.Show("Udfyld alle felterne");
+                MessageBox.Show(ex.Message);
             }
         }
-
-        /*private void CarDriverCboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            CarDriverCboBox.Items.Clear();
-            foreach (var passenger in ferryBLL.GetPassengers(ferry))
-            {
-                CarDriverCboBox.Items.Add(passenger);
-            }
-        }*/
     }
 }

@@ -63,7 +63,14 @@ namespace WPFGUI
         private void EditFerryBtn_Click(object sender, RoutedEventArgs e)
         {
             Ferry temp = (Ferry)FerryList.SelectedItem;
-            ferry = new Ferry(temp.FerryID, FerryNameTxt.Text, int.Parse(FerryNumberOfPassengersTxt.Text), int.Parse(FerryNumberOfCarsTxt.Text), int.Parse(FerryPricePassengersTxt.Text), int.Parse(FerryPriceCarsTxt.Text), (List<Passenger>)temp.Passengers, (List<Car>)temp.Cars);
+            ferry = new Ferry(temp.FerryID, 
+                FerryNameTxt.Text, 
+                int.Parse(FerryNumberOfPassengersTxt.Text), 
+                int.Parse(FerryNumberOfCarsTxt.Text), 
+                int.Parse(FerryPricePassengersTxt.Text), 
+                int.Parse(FerryPriceCarsTxt.Text), 
+                (List<Passenger>)temp.Passengers, 
+                (List<Car>)temp.Cars);
             ferryBLL.UpdateFerry(ferry);
         }
 
@@ -80,6 +87,7 @@ namespace WPFGUI
                     int ferryId = int.Parse(input);
                     Ferry res = ferryBLL.GetFerry(ferryId);
 
+                    FerryIDSearchFieldTxt.Text = "";
                     FerryList.Items.Clear();
                     FerryList.Items.Add(res);
                 }

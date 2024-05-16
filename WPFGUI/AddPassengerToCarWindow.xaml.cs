@@ -35,18 +35,19 @@ namespace WPFGUI
         private void AddPassengerToCarBtn_Click(object sender, RoutedEventArgs e)
         {
             Passenger selectedPassenger = (Passenger)PassengersList.SelectedItem;
-            if (selectedPassenger != null)
-            {
+            try
+            { 
                 carBLL.AddPassengerToCar(car, selectedPassenger);
 
                 MessageBox.Show("Gæst tilføjet til bil");
 
                 this.Close();
-            } else
-            {
-                MessageBox.Show("Vælg en passager");
             }
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            }
 
         private void PassengersList_Loaded(object sender, RoutedEventArgs e)
         {

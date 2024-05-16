@@ -10,13 +10,13 @@
         <ListBox x:Name="FerryList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="73,163,447,74" SelectionChanged="FerryList_SelectionChanged"/>
         <Button x:Name="ShowFerries" Content="Vis færger" HorizontalAlignment="Left" Margin="73,365,0,0" VerticalAlignment="Top" Click="VisFærger_Click"/>
         <Button x:Name="FindFerryBtn" Content="Find færge på ID:" HorizontalAlignment="Left" Margin="73,113,0,0" VerticalAlignment="Top" Click="FindFerryBtn_Click"/>
-        <TextBox x:Name="FerryIDSearchFieldTxt" HorizontalAlignment="Left" Margin="187,113,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FerryIDSearchFieldTxt" HorizontalAlignment="Left" Margin="187,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="FerryIDLbl" Content="ID" HorizontalAlignment="Left" Margin="554,163,0,0" VerticalAlignment="Top"/>
         <Label x:Name="FerryNameLbl" Content="Navn" HorizontalAlignment="Left" Margin="554,189,0,0" VerticalAlignment="Top"/>
         <Label x:Name="FerryNumberOfCarsLbl" Content="Max antal gæster" HorizontalAlignment="Left" Margin="554,241,0,0" VerticalAlignment="Top"/>
         <Label x:Name="FerryNumberOfPassengersLbl" Content="Max antal biler" HorizontalAlignment="Left" Margin="554,215,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="FerryNumberOfPassengersTxt" IsReadOnly="true" HorizontalAlignment="Left" Margin="656,245,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="FerryNumberOfCarsTxt" IsReadOnly="true" HorizontalAlignment="Left" Margin="656,219,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FerryNumberOfPassengersTxt" HorizontalAlignment="Left" Margin="656,245,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FerryNumberOfCarsTxt" HorizontalAlignment="Left" Margin="656,219,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="FerryNameTxt" HorizontalAlignment="Left" Margin="656,193,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="FerryIDTxt" HorizontalAlignment="Left" Margin="656,167,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="ShowCarsOnFerryBtn" Content="Vis biler" HorizontalAlignment="Left" Margin="358,340,0,0" VerticalAlignment="Top" Click="ShowCarsOnFerryBtn_Click"/>
@@ -24,13 +24,13 @@
         <Button x:Name="AddCarToSelectedFerryBtn" Content="Tilføj ny bil" HorizontalAlignment="Left" Margin="358,203,0,0" VerticalAlignment="Top" Click="AddCarToSelectedFerryBtn_Click"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="262" Margin="554,137,0,0" VerticalAlignment="Top" Width="226"/>
         <Label Content="Info:" HorizontalAlignment="Left" Margin="565,137,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="EditFerryBtn" Content="Rediger navn" HorizontalAlignment="Left" Margin="703,350,0,0" VerticalAlignment="Top" Click="EditFerryBtn_Click"/>
+        <Button x:Name="EditFerryBtn" Content="Rediger" HorizontalAlignment="Left" Margin="703,350,0,0" VerticalAlignment="Top" Click="EditFerryBtn_Click"/>
         <Button x:Name="ShowPassengersOnFerryBtn" Content="Vis gæster" HorizontalAlignment="Left" Margin="358,315,0,0" VerticalAlignment="Top" Click="ShowPassengersOnFerryBtn_Click"/>
         <Button x:Name="FerryProfitBtn" Content="Se indtægt for skib" HorizontalAlignment="Left" Margin="422,315,0,0" VerticalAlignment="Top" Click="FerryProfitBtn_Click"/>
         <Label x:Name="FerryPricePassengersLbl" Content="Pris pr. gæst" HorizontalAlignment="Left" Margin="554,272,0,0" VerticalAlignment="Top"/>
         <Label x:Name="FerryPriceCarsLbl" Content="Pris pr. bil" HorizontalAlignment="Left" Margin="554,303,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="FerryPricePassengersTxt" IsReadOnly="true" HorizontalAlignment="Left" Margin="656,276,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="FerryPriceCarsTxt" IsReadOnly="true" HorizontalAlignment="Left" Margin="656,307,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FerryPricePassengersTxt" HorizontalAlignment="Left" Margin="656,276,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FerryPriceCarsTxt" HorizontalAlignment="Left" Margin="656,307,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
