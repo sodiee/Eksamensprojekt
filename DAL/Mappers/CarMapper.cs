@@ -19,7 +19,6 @@ namespace DAL.Mappers
             return new DTO.Model.Car {
                 CarID = bil.CarID,
                 FerryID = bil.FerryID,
-                //Driver = new DTO.Model.Passenger(bil.Driver.Name, bil.Driver.Gender, bil.Driver.Age, bil.Driver.Birthday),
                 Passengers = resList,
                             NumberOfPassengers= bil.NumberOfPassengers,
                             Name = bil.Name,
@@ -39,7 +38,6 @@ namespace DAL.Mappers
             {
                 CarID = bil.CarID,
                 FerryID = bil.FerryID,
-                //Driver = new Passenger(bil.Driver.Name, bil.Driver.Gender, bil.Driver.Age, bil.Driver.Birthday),
                 Passengers = resList,
                 NumberOfPassengers = bil.NumberOfPassengers,
                 Name = bil.Name,

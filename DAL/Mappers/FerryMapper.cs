@@ -32,16 +32,16 @@ namespace DAL.Mappers
                 }
             }
 
-            return new DTO.Model.Ferry(
-                            ferry.FerryID,
-                            ferry.Name,
-                            ferry.MaxNumberOfPassengers,
-                            ferry.MaxNumberOfCars,
-                            ferry.PricePassengers,
-                            ferry.PriceCars,
-                            ferryPassengers,
-                            ferryCars
-                        );
+            return new DTO.Model.Ferry {
+                            FerryID = ferry.FerryID,
+                            Name = ferry.Name,
+                            MaxNumberOfPassengers = ferry.MaxNumberOfPassengers,
+                            MaxNumberOfCars = ferry.MaxNumberOfCars,
+                            PricePassengers = ferry.PricePassengers,
+                            PriceCars = ferry.PriceCars,
+                            Passengers = ferryPassengers,
+                            Cars= ferryCars
+                        };
         }
 
         public static Ferry Map(DTO.Model.Ferry ferry)
@@ -66,16 +66,17 @@ namespace DAL.Mappers
                 }
             }
 
-            return new Ferry(
-                            ferry.FerryID,
-                            ferry.Name,
-                            ferry.MaxNumberOfPassengers,
-                            ferry.MaxNumberOfCars,
-                            ferry.PricePassengers,
-                            ferry.PriceCars,
-                            ferryPassengers,
-                            ferryCars
-                        );
+            return new Ferry
+            {
+                FerryID = ferry.FerryID,
+                Name = ferry.Name,
+                MaxNumberOfPassengers = ferry.MaxNumberOfPassengers,
+                MaxNumberOfCars = ferry.MaxNumberOfCars,
+                PricePassengers = ferry.PricePassengers,
+                PriceCars = ferry.PriceCars,
+                Passengers = ferryPassengers,
+                Cars = ferryCars
+            };
         }
     }
 }

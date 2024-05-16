@@ -25,11 +25,6 @@ namespace WPFGUI
         {
             InitializeComponent();
             this.ferry = selectedFerry;
-            CarDriverCboBox.Items.Clear();
-            foreach (var passenger in ferryBLL.GetPassengers(ferry))
-            {
-                CarDriverCboBox.Items.Add(passenger);
-            }
         }
 
         FerryBLL ferryBLL = new FerryBLL();
@@ -39,14 +34,25 @@ namespace WPFGUI
 
         private void AddCarBtn_Click(object sender, RoutedEventArgs e)
         {
-            carToAdd = new Car(CarNameTxt.Text, CarModelTxt.Text, CarLicensePlateTxt.Text);
+            if (CarNameTxt.Text.Trim().Length > 0 || CarModelTxt.Text.Trim().Length > 0 || CarLicensePlateTxt.Text.Trim().Length > 0)
+            {
+                carToAdd = new Car
+                {
+                    Name = CarNameTxt.Text,
+                    Model = CarModelTxt.Text,
+                    LicensePlate = CarLicensePlateTxt.Text
+                };
 
-            //carBLL.AddCar(carToAdd);
-            ferryBLL.AddCarToFerry(ferry, carToAdd);
+                //carBLL.AddCar(carToAdd);
+                ferryBLL.AddCarToFerry(ferry, carToAdd);
 
-            MessageBox.Show("Bilen er tilføjet til færge");
+                MessageBox.Show("Bilen er tilføjet til færge");
 
-            this.Close();
+                this.Close();
+            } else
+            {
+                MessageBox.Show("Udfyld alle felterne");
+            }
         }
 
         /*private void CarDriverCboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

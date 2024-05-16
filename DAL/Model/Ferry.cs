@@ -1,6 +1,7 @@
 ﻿using DAL.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,15 @@ namespace DAL
     public class Ferry
     {
         public int FerryID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public int MaxNumberOfPassengers { get; set; }
+        [Required]
         public int MaxNumberOfCars { get; set; }
+        [Required]
         public int PricePassengers { get; set; }
+        [Required]
         public int PriceCars { get; set; }
         public ICollection<Passenger> Passengers { get; set; }
         public ICollection<Car> Cars { get; set; }
