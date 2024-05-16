@@ -33,7 +33,7 @@ namespace DTO.Model
             Cars = new List<Car>();
         }
 
-        public Ferry(string name, int maxNumberOfPassengers, int maxNumberOfCars, int pricePassenger, int priceCars, List<Passenger> passengers, List<Car> cars)
+        public Ferry(string name, int maxNumberOfPassengers, int maxNumberOfCars, int pricePassenger, int priceCars)
         {
             this.Name = name;
             this.MaxNumberOfPassengers = maxNumberOfPassengers;
@@ -41,8 +41,8 @@ namespace DTO.Model
             this.PricePassengers = pricePassenger;
             this.PriceCars = priceCars;
 
-            this.Passengers = passengers;
-            this.Cars = cars;
+            this.Passengers = new List<Passenger>();
+            this.Cars = new List<Car>();
         }
 
         public Ferry(int id, string name, int maxNumberOfPassengers, int maxNumberOfCars, int pricePassenger, int priceCars, List<Passenger> passengers, List<Car> cars)

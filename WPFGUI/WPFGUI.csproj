@@ -64,6 +64,9 @@
     <Compile Include="AddPassengerWindow.xaml.cs">
       <DependentUpon>AddPassengerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="APIWindow.xaml.cs">
+      <DependentUpon>APIWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowCarsOnFerry.xaml.cs">
       <DependentUpon>ShowCarsOnFerry.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddPassengerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="APIWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

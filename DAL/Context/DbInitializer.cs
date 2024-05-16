@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Security;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Mappers;
@@ -14,7 +17,6 @@ namespace DAL.Context
     {
         protected override void Seed(DataBaseContext context)
         {
-
             Ferry f1 = new Ferry("Molslinjen", 400, 100, 99, 197, new List<Passenger>(), new List<Car>());
             Ferry f2 = new Ferry("Scandlines", 40, 10, 99, 197, new List<Passenger>(), new List<Car>());
             Ferry f3 = new Ferry("Stenaline", 200, 50, 99, 197, new List<Passenger>(), new List<Car>());
@@ -36,7 +38,6 @@ namespace DAL.Context
 
             context.SaveChanges();
         }
-
 
         private void dummy()
         {

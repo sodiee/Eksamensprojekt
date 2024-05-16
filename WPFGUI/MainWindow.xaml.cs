@@ -178,5 +178,11 @@ namespace WPFGUI
                 MessageBox.Show("Vælg en færge");
             }
         }
+
+        private void APIBtn_Click(object sender, RoutedEventArgs e)
+        {
+            APIWindow aw = new APIWindow();
+            aw.Show();
+        }
     }
 }
