@@ -18,7 +18,6 @@ namespace BLL.BLL
         }
         public void AddCar(Car car)
         {
-            //valider car
             CarRepository.AddCar(car);
         }
         public void UpdateCar(Car car)
@@ -39,6 +38,12 @@ namespace BLL.BLL
         public void RemoveCar(Car selectedCar)
         {
             CarRepository.RemoveCar(selectedCar);
+        }
+
+        public void RemovePassenger(Passenger passenger, int carID)
+        {
+            Car car = GetCar(carID);
+            CarRepository.RemovePassenger(passenger, car);
         }
     }
 }

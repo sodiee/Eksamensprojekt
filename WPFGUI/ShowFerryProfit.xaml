@@ -8,7 +8,7 @@
         Title="ShowFerryProfit" Height="450" Width="800">
     <Grid Loaded="Grid_Loaded">
         <Label x:Name="TotalPricePassengersLbl" Content="Total pris for passagere: " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="TotalPriceCarsLbl" Content="Total pris for passagere: " HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalPriceCarsLbl" Content="Total pris for biler: " HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
         <Label x:Name="TotalPriceBothLbl" Content="Total pris for begge: " HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TotalPricePassengersTxt" HorizontalAlignment="Left" Margin="153,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TotalPriceCarsTxt" HorizontalAlignment="Left" Margin="153,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>

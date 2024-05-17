@@ -109,8 +109,6 @@ namespace WebGUI.Controllers
                     return HttpNotFound();
                 }
 
-                //carBLL.AddPassengerToCar(car, passenger);
-
                 return RedirectToAction("Details", new { id = id });
             }
             catch (Exception ex)

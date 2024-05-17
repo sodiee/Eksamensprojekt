@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Ferry AddFerry([FromUri] Ferry newFerry)
+        public Ferry AddFerry(Ferry newFerry)
         {
             ferryBLL.AddFerry(newFerry);
 
@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
 
         [HttpPut]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Ferry UpdateFerry(int id, [FromBody] Ferry updatedFerry)
+        public Ferry UpdateFerry(int id, Ferry updatedFerry)
         {
             updatedFerry.FerryID = id;
 

@@ -9,6 +9,8 @@ using DAL.Context;
 using DAL.Mappers;
 using DTO.Model;
 using System.Data.Entity.Infrastructure;
+using System.Runtime.ConstrainedExecution;
+using System.Data.Entity;
 
 namespace DAL.Repositories
 {
@@ -68,6 +70,36 @@ namespace DAL.Repositories
 
                 context.SaveChanges();
             }
+        }
+
+        public static void RemovePassenger(DTO.Model.Passenger passenger, DTO.Model.Car car)
+        {
+            using (DataBaseContext context = new DataBaseContext())
+    {
+        try
+        {
+            DAL.Model.Car carToRemoveFrom = context.Cars.Include(c => c.Passengers).FirstOrDefault(c => c.CarID == car.CarID);
+            if (carToRemoveFrom == null)
+            {
+                throw new Exception("Bilen blev ikke fundet.");
+            }
+
+            Passenger passengerToRemove = carToRemoveFrom.Passengers.FirstOrDefault(p => p.PassengerID == passenger.PassengerID);
+            if (passengerToRemove == null)
+            {
+                throw new Exception("Passageren blev ikke fundet i bilen.");
+            }
+
+            carToRemoveFrom.Passengers.Remove(passengerToRemove);
+                    carToRemoveFrom.NumberOfPassengers--;
+
+            context.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Fejl ved fjernelse af passager: " + ex.Message);
+        }
+    }
         }
 
         public static void AddPassengerToCar(DTO.Model.Car car, DTO.Model.Passenger passenger)

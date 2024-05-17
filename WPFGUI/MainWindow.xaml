@@ -31,7 +31,7 @@
         <Label x:Name="FerryPriceCarsLbl" Content="Pris pr. bil" HorizontalAlignment="Left" Margin="554,303,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="FerryPricePassengersTxt" HorizontalAlignment="Left" Margin="656,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="FerryPriceCarsTxt" HorizontalAlignment="Left" Margin="656,307,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="APIBtn" Content="API" HorizontalAlignment="Left" Margin="703,10,0,0" VerticalAlignment="Top" Height="47" Width="87" Click="APIBtn_Click"/>
+        <Button x:Name="APIBtn" Content="API" HorizontalAlignment="Left" Margin="554,10,0,0" VerticalAlignment="Top" Height="47" Width="226" Click="APIBtn_Click"/>
 
     </Grid>
 </Window>

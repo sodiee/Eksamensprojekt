@@ -65,16 +65,5 @@ namespace DAL.Repositories
                 context.SaveChanges();
             }
         }
-
-        /*public static void EditGæst(Gæst gæst)
-        {
-            using (FærgeContext context = new FærgeContext())
-            {
-                Gæst dataGæst = context.Gæster.Find(gæst.ID);
-                GæstMapper.UpdateFærge(gæst, dataGæst);
-
-                context.SaveChanges();
-            }
-        }*/
     }
 }

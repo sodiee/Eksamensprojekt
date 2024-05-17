@@ -1,25 +1,38 @@
 ﻿@model DTO.Model.Passenger
 
-@using (Html.BeginForm("AddNewPassenger", "Ferry", FormMethod.Post))
+@using (Html.BeginForm("AddPassenger", "Passenger", new { ferryId = Model.FerryID }, FormMethod.Post))
 {
-    <input type="hidden" name="id" value="@ViewBag.FerryID" />
- <!-- inkluder id som en skjult input -->
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+    @Html.HiddenFor(model => model.FerryID)
     <div>
-        <label for="Name">Name:</label>
-        @Html.TextBoxFor(model => model.Name)
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
     </div>
     <div>
-        <label for="Gender">Gender:</label>
-        @Html.TextBoxFor(model => model.Gender)
+        @Html.LabelFor(model => model.Gender)
+        @Html.EditorFor(model => model.Gender)
+        @Html.ValidationMessageFor(model => model.Gender)
     </div>
     <div>
-        <label for="Age">Age:</label>
-        @Html.TextBoxFor(model => model.Age)
+        @Html.LabelFor(model => model.Age)
+        @Html.EditorFor(model => model.Age)
+        @Html.ValidationMessageFor(model => model.Age)
     </div>
     <div>
-        <label for="Birthday">Birthday:</label>
-        @Html.TextBoxFor(model => model.Birthday, new { type = "date" })
+        @Html.LabelFor(model => model.Birthday)
+        @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.Birthday)
     </div>
-    <button type="submit" class="btn btn-primary">Tilføj passager</button>
+    <div>
+        <label for="CarId">Choose a car:</label>
+        <select name="CarId">
+            @foreach (var car in ViewBag.Cars)
+            {
+                <option value="@car.CarID">@car.Name - @car.Model</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Add Passenger</button>
 }

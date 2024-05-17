@@ -33,6 +33,15 @@ namespace WebGUI.Controllers
         [HttpPost]
         public ActionResult AddPassenger(int ferryId, Passenger passenger, int carId)
         {
+
+            Car car = carBLL.GetCar(carId);
+
+
+            if (car.NumberOfPassengers >= 5)
+            {
+                ModelState.AddModelError("", "Bilen er allerede fuld. Der kan ikke tilføjes flere passagerer.");
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -45,7 +54,6 @@ namespace WebGUI.Controllers
 
                     ferryBLL.AddPassengerToFerry(ferry, passenger);
                     
-                    var car = carBLL.GetCar(carId);
                     if (car == null)
                     {
                         return HttpNotFound();
@@ -120,6 +128,9 @@ namespace WebGUI.Controllers
         public ActionResult DeleteConfirmed(int id, int ferryId)
         {
             var pToDelete = passengerBLL.GetPassenger(id);
+            if (pToDelete.CarID == null) { return HttpNotFound(); }
+            carBLL.RemovePassenger(pToDelete, (int)pToDelete.CarID);
+         
             passengerBLL.RemovePassenger(pToDelete);
             return RedirectToAction("Details", "Ferry", new { id = ferryId });
         }

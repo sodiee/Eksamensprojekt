@@ -46,6 +46,7 @@ namespace WPFGUI
             passengerToUpdate = (Passenger)PassengersOnFerryList.SelectedItem;
             if (PassengersOnFerryList.SelectedItem != null) 
                 {
+                PassengerIDTxt.Text = passengerToUpdate.PassengerID.ToString();
                 PassengerNameTxt.Text = passengerToUpdate.Name;
                 PassengerGenderTxt.Text = passengerToUpdate.Gender;
                 PassengerAgeTxt.Text = passengerToUpdate.Age.ToString();
@@ -69,10 +70,8 @@ namespace WPFGUI
 
         private void RefreshPassengerList()
         {
-            // Fjern alle elementer fra ListBox'en
             PassengersOnFerryList.Items.Clear();
 
-            // Tilføj passagererne på færgen til ListBox'en igen
             foreach (Passenger passenger in ferry.Passengers)
             {
                 PassengersOnFerryList.Items.Add(passenger);

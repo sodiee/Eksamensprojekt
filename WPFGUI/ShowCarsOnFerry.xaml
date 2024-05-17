@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WPFGUI"
         mc:Ignorable="d"
         Title="ShowCarsOnFerry" Height="450" Width="800">
-    <Grid Loaded="Grid_Loaded">
-        <ListBox x:Name="CarsOnFerryList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="35,100,447,100" SelectionChanged="CarsOnFerryList_SelectionChanged" Loaded="CarsOnFerryList_Loaded"/>
+    <Grid>
+        <ListBox x:Name="CarsOnFerryList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="35,100,447,100" SelectionChanged="CarsOnFerryList_SelectionChanged"/>
         <Label x:Name="CarsOnFerryLbl" Content="Biler på færgen:" HorizontalAlignment="Left" Margin="35,69,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CarNameLbl" Content="Navn:" HorizontalAlignment="Left" Margin="515,122,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CarModelLbl" Content="Model:" HorizontalAlignment="Left" Margin="515,153,0,0" VerticalAlignment="Top"/>

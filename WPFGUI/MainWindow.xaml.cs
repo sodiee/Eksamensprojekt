@@ -40,11 +40,6 @@ namespace WPFGUI
             Reload();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void FerryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (FerryList.SelectedItem != null)
@@ -72,6 +67,7 @@ namespace WPFGUI
                 (List<Passenger>)temp.Passengers, 
                 (List<Car>)temp.Cars);
             ferryBLL.UpdateFerry(ferry);
+            Reload();
         }
 
         private void FindFerryBtn_Click(object sender, RoutedEventArgs e)
@@ -85,18 +81,27 @@ namespace WPFGUI
                 if (regex.IsMatch(input))
                 {
                     int ferryId = int.Parse(input);
-                    Ferry res = ferryBLL.GetFerry(ferryId);
 
-                    FerryIDSearchFieldTxt.Text = "";
-                    FerryList.Items.Clear();
-                    FerryList.Items.Add(res);
+                    bool containsFerryId = ferryBLL.GetFerryList().Any(f => f.FerryID == ferryId);
+
+                    if (containsFerryId)
+                    {
+                        Ferry res = ferryBLL.GetFerry(ferryId);
+
+                        FerryIDSearchFieldTxt.Text = "";
+                        FerryList.Items.Clear();
+                        FerryList.Items.Add(res);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Færge ID ikke fundet i listen.");
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Indtast venligst kun et heltal for færge ID.");
                 }
             }
-
         }
 
         private void ShowPassengersOnFerryBtn_Click(object sender, RoutedEventArgs e)
@@ -111,6 +116,7 @@ namespace WPFGUI
             {
                 MessageBox.Show("Vælg en færge");
             }
+            Reload();
         }
 
         private void ShowCarsOnFerryBtn_Click(object sender, RoutedEventArgs e)
@@ -120,11 +126,13 @@ namespace WPFGUI
                 Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
                 ShowCarsOnFerry scf = new ShowCarsOnFerry(selectedFerry);
                 scf.Show();
+                Reload();
             }
             else
             {
                 MessageBox.Show("Vælg en færge");
             }
+
         }
 
         private void AddPassengerToSelectedFerryBtn_Click(object sender, RoutedEventArgs e)
@@ -134,12 +142,13 @@ namespace WPFGUI
                 Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
                 AddPassengerWindow apw = new AddPassengerWindow(selectedFerry);
                 apw.Show();
+                Reload();
             }
             else
             {
                 MessageBox.Show("Vælg en færge");
             }
-            Reload();
+
         }
 
         private void AddCarToSelectedFerryBtn_Click(object sender, RoutedEventArgs e)
@@ -149,11 +158,13 @@ namespace WPFGUI
                 Ferry selectedFerry = (Ferry)FerryList.SelectedItem;
                 AddCarWindow acw = new AddCarWindow(selectedFerry);
                 acw.Show();
+                Reload();
             }
             else
             {
                 MessageBox.Show("Vælg en færge");
             }
+            
         }
 
         private void Reload()
@@ -163,6 +174,13 @@ namespace WPFGUI
             {
                 FerryList.Items.Add(ferry);
             }
+
+            FerryIDTxt.Text = "";
+            FerryNameTxt.Text = "";
+            FerryPriceCarsTxt.Text = "";
+            FerryPricePassengersTxt.Text = "";
+            FerryNumberOfPassengersTxt.Text = "";
+            FerryNumberOfCarsTxt.Text = "";
         }
 
         private void FerryProfitBtn_Click(object sender, RoutedEventArgs e)
@@ -177,12 +195,14 @@ namespace WPFGUI
             {
                 MessageBox.Show("Vælg en færge");
             }
+            Reload();
         }
 
         private void APIBtn_Click(object sender, RoutedEventArgs e)
         {
             APIWindow aw = new APIWindow();
             aw.Show();
+            Reload();
         }
     }
 }

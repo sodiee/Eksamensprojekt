@@ -39,10 +39,17 @@ namespace WebGUI.Controllers
                         return HttpNotFound();
                     }
 
-                    // Tilføj bilen til færgen
+                    if (ferry.Cars.Count < 5) { 
+
                     ferryBLL.AddCarToFerry(ferry, car);
 
                     return RedirectToAction("Details", "Ferry", new { id = ferryId });
+                    } else
+                    {
+                        ModelState.AddModelError("", "Færgen kan ikke rumme flere biler.");
+                        ViewBag.Ferry = ferry;
+                        return View(car);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -63,10 +70,8 @@ namespace WebGUI.Controllers
                 return HttpNotFound();
             }
 
-            // Hent passagererne for bilen
             var passengers = carBLL.GetPassengersInCar(car);
 
-            // Gem passagererne i en ViewBag-variabel
             ViewBag.Passengers = passengers;
 
             return View(car);

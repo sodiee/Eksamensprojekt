@@ -32,11 +32,6 @@ namespace WPFGUI
         Ferry ferry;
         Car car;
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void CarsOnFerryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Car selectedCar = (Car)CarsOnFerryList.SelectedItem;
@@ -56,16 +51,6 @@ namespace WPFGUI
 
                
             }
-        }
-
-        private void CarPassengersList_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CarsOnFerryList_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void AddPassengerToCarBtn_Click(object sender, RoutedEventArgs e)
@@ -99,14 +84,20 @@ namespace WPFGUI
 
         private void RemoveCarBtn_Click(object sender, RoutedEventArgs e)
         {
-            Car selectedCar = (Car)CarsOnFerryList.SelectedItem;
-            if (selectedCar != null)
+            try
             {
-                carBLL.RemoveCar(selectedCar);
-            }
-            else
+                Car selectedCar = (Car)CarsOnFerryList.SelectedItem;
+                if (selectedCar != null)
+                {
+                    carBLL.RemoveCar(selectedCar);
+                }
+                else
+                {
+                    MessageBox.Show("Vælg en bil");
+                }
+            } catch (Exception ex)
             {
-                MessageBox.Show("Vælg en bil");
+                MessageBox.Show("Fjern venligst den tilknyttede gæst først");
             }
         }
     }

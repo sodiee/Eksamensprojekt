@@ -17,7 +17,6 @@ namespace BLL.BLL
         }
         public void AddPassenger(Passenger passenger)
         {
-            //valider employee
             PassengerRepository.AddPassenger(passenger);
         }
         public void UpdatePassenger(Passenger passenger)
