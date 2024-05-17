@@ -43,7 +43,6 @@ namespace WPFGUI
                     LicensePlate = CarLicensePlateTxt.Text
                 };
 
-                //carBLL.AddCar(carToAdd);
                 ferryBLL.AddCarToFerry(ferry, carToAdd);
 
                 MessageBox.Show("Bilen er tilføjet til færge");

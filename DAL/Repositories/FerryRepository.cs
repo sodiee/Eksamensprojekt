@@ -133,13 +133,16 @@ namespace DAL.Repositories
         {
             using (DataBaseContext context = new DataBaseContext())
             {
-                //!find færge i db
                 Ferry temp = context.Ferries.Find(ferry.FerryID);
 
-                //!tilføj passageren til færgen
-                temp.Passengers.Add(PassengerMapper.Map(passenger));
+                if (temp.Passengers.Count <= temp.MaxNumberOfPassengers)
+                {
+                    temp.Passengers.Add(PassengerMapper.Map(passenger));
+                } else
+                {
+                    throw new Exception("Du må ikke overskride færgens maks. kapacitet for passagere på " + temp.MaxNumberOfPassengers);
+                }
 
-                //!gem ændringerne i databasen
                 context.SaveChanges();
             }
            }
@@ -149,8 +152,14 @@ namespace DAL.Repositories
             using (DataBaseContext context = new DataBaseContext())
             {
                 Ferry temp = context.Ferries.Find(ferry.FerryID);
-                temp.Cars.Add(CarMapper.Map(car));
-
+                if (temp.Cars.Count <= temp.MaxNumberOfCars)
+                {
+                    temp.Cars.Add(CarMapper.Map(car));
+                }
+                else
+                {
+                    throw new Exception("Du må ikke overskride færgens maks. kapacitet for passagere på " + temp.MaxNumberOfPassengers);
+                }
                 context.SaveChanges();
             }
         }

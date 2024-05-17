@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="APIWindow" Height="450" Width="800">
     <Grid>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,84,596,133"/>
+        <ListBox x:Name="ApiFerriesListbox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,84,596,133" ContextMenuClosing="ApiFerriesListbox_ContextMenuClosing"/>
         <Button x:Name="GetFerriesBtn" Content="Hent færger" HorizontalAlignment="Left" Margin="10,306,0,0" VerticalAlignment="Top" Click="GetFerriesBtn_Click"/>
-        <TextBox x:Name="testTxt" HorizontalAlignment="Left" Margin="246,105,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="testTxt" HorizontalAlignment="Left" Margin="246,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

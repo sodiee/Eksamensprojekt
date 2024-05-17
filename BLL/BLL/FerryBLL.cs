@@ -14,7 +14,6 @@ namespace BLL.BLL
         }
         public void AddFerry(Ferry ferry)
         {
-            //valider ferry
             FerryRepository.AddFerry(ferry);
         }
         public void UpdateFerry(Ferry ferry)
@@ -39,12 +38,25 @@ namespace BLL.BLL
 
         public void AddPassengerToFerry(Ferry ferry, Passenger passenger) 
         {
-            FerryRepository.AddPassengerToFerry(ferry, passenger);
+            if (ferry.Passengers.Count < ferry.MaxNumberOfPassengers - 1)
+            {
+                FerryRepository.AddPassengerToFerry(ferry, passenger);
+            }
+            else
+            {
+                throw new Exception("Der kan ikke tilføjes flere biler til færgen");
+            }
         }
 
         public void AddCarToFerry(Ferry ferry, Car car)
         {
-            FerryRepository.AddCarToFerry(ferry, car);
+            if (ferry.Cars.Count < ferry.MaxNumberOfCars - 1)
+            {
+                FerryRepository.AddCarToFerry(ferry, car);
+            } else
+            {
+                throw new Exception("Der kan ikke tilføjes flere biler til færgen");
+            }
         }
 
         public void RemoveFerry(int id)

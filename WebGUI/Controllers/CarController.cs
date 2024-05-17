@@ -23,28 +23,21 @@ namespace WebGUI.Controllers
             }
 
             ViewBag.Ferry = ferry;
-            return View("AddCar");
+            return View(new Car { FerryID = ferryId });
         }
 
         [HttpPost]
         public ActionResult AddCar(int ferryId, Car car)
         {
-            ModelState.Clear();
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if (ferryId == 0)
-                    {
-                        return HttpNotFound();
-                    }
                     var ferry = ferryBLL.GetFerry(ferryId);
                     if (ferry == null)
                     {
                         return HttpNotFound();
                     }
-
-                    //carBLL.AddCar(car);
 
                     // Tilføj bilen til færgen
                     ferryBLL.AddCarToFerry(ferry, car);
@@ -54,10 +47,12 @@ namespace WebGUI.Controllers
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", "An error occurred while adding the car: " + ex.Message);
-                    return View(car);
                 }
             }
-            return RedirectToAction("Details", "Ferry", new { id = ferryId });
+
+            var ferryFallback = ferryBLL.GetFerry(ferryId);
+            ViewBag.Ferry = ferryFallback;
+            return View(car);
         }
 
         public ActionResult Details(int id)

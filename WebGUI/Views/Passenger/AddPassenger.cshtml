@@ -6,7 +6,7 @@
 
 <h2>Add Passenger</h2>
 
-@using (Html.BeginForm("AddPassenger", "Passenger", new { ferryId = ViewBag.Ferry.FerryID }, FormMethod.Post))
+@using (Html.BeginForm("AddPassenger", "Passenger", new { ferryId = Model.FerryID }, FormMethod.Post))
 {
     @Html.HiddenFor(model => model.FerryID)
     <div>

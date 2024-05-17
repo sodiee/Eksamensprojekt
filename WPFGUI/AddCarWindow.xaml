@@ -10,9 +10,9 @@
         <Label x:Name="CarNameLbl" Content="Navn:" HorizontalAlignment="Left" Margin="56,76,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CarModelLbl" Content="Model:" HorizontalAlignment="Left" Margin="56,107,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CarLicensePlateLbl" Content="Nummerplade:" HorizontalAlignment="Left" Margin="56,138,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="CarLicensePlateTxt" HorizontalAlignment="Left" Margin="150,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CarModelTxt" HorizontalAlignment="Left" Margin="150,111,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CarNameTxt" HorizontalAlignment="Left" Margin="150,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarLicensePlateTxt" HorizontalAlignment="Left" Margin="150,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarModelTxt" HorizontalAlignment="Left" Margin="150,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarNameTxt" HorizontalAlignment="Left" Margin="150,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="39,44,487,176"/>
         <Button x:Name="AddCarBtn" Content="Tilføj bil" HorizontalAlignment="Left" Margin="224,194,0,0" VerticalAlignment="Top" Click="AddCarBtn_Click"/>
 

@@ -27,44 +27,44 @@ namespace WebGUI.Controllers
 
             ViewBag.Ferry = ferry;
             ViewBag.Cars = cars;
-            return View();
+            return View(new Passenger { FerryID = ferryId });
         }
 
         [HttpPost]
         public ActionResult AddPassenger(int ferryId, Passenger passenger, int carId)
         {
-            try
+            if (ModelState.IsValid)
             {
-                ModelState.Clear();
-                /*if (ModelState.IsValid)
+                try
                 {
-                }*/
                     var ferry = ferryBLL.GetFerry(ferryId);
-                if (ferry == null)
-                {
-                    return HttpNotFound();
+                    if (ferry == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    ferryBLL.AddPassengerToFerry(ferry, passenger);
+                    
+                    var car = carBLL.GetCar(carId);
+                    if (car == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    carBLL.AddPassengerToCar(car, passenger);
+
+
+                    return RedirectToAction("Details", "Ferry", new { id = ferryId });
                 }
-
-                // Tilføj passager til færgen
-                ferryBLL.AddPassengerToFerry(ferry, passenger);
-
-                // Hent bilen fra id'et
-                var car = carBLL.GetCar(carId);
-                if (car == null)
+                catch (Exception ex)
                 {
-                    return HttpNotFound();
+                    ModelState.AddModelError("", "An error occurred while adding the passenger: " + ex.Message);
                 }
-
-                // Tilføj passageren til bilen
-                //carBLL.AddPassengerToCar(car, passenger);
-                return RedirectToAction("Details", "Ferry", new { id = ferryId });
-
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "An error occurred while adding the passenger: " + ex.Message);
-                return View(passenger);
-            }
+
+            var cars = ferryBLL.GetCars(ferryBLL.GetFerry(ferryId));
+            ViewBag.Cars = cars;
+            ViewBag.Ferry = ferryBLL.GetFerry(ferryId);
+            return View(passenger);
         }
 
         public ActionResult Details(int id)

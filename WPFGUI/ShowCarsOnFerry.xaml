@@ -13,17 +13,17 @@
         <Label x:Name="CarModelLbl" Content="Model:" HorizontalAlignment="Left" Margin="515,153,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CarLicensePlateLbl" Content="Nummerplade:" HorizontalAlignment="Left" Margin="515,184,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CarPassengersLbl" Content="Passegere:" HorizontalAlignment="Left" Margin="515,250,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="CarLicensePlateTxt" HorizontalAlignment="Left" Margin="609,188,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CarModelTxt" HorizontalAlignment="Left" Margin="609,157,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CarNameTxt" HorizontalAlignment="Left" Margin="609,126,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarLicensePlateTxt" HorizontalAlignment="Left" Margin="609,188,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarModelTxt" HorizontalAlignment="Left" Margin="609,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarNameTxt" HorizontalAlignment="Left" Margin="609,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="CarNumberOfPassengersLbl" Content="Antal af gæster:" HorizontalAlignment="Left" Margin="515,215,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="CarNumberOfPassengersTxt" HorizontalAlignment="Left" Margin="609,219,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarNumberOfPassengersTxt" HorizontalAlignment="Left" Margin="609,219,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="UpdateCarBtn" Content="Rediger bil" HorizontalAlignment="Left" Margin="668,368,0,0" VerticalAlignment="Top" Click="UpdateCarBtn_Click"/>
         <Button x:Name="ShowCarsBtn" Content="Vis biler" HorizontalAlignment="Left" Margin="35,339,0,0" VerticalAlignment="Top" Click="ShowCarsBtn_Click"/>
         <Button x:Name="RemoveCarBtn" Content="Fjern bil" HorizontalAlignment="Left" Margin="358,314,0,0" VerticalAlignment="Top" Click="RemoveCarBtn_Click"/>
         <ListBox x:Name="CarPassengersList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="609,251,71,73"/>
         <Button x:Name="AddPassengerToCarBtn" Content="Tilføj en gæst til bil" HorizontalAlignment="Left" Margin="358,289,0,0" VerticalAlignment="Top" Click="AddPassengerToCarBtn_Click"/>
-        <TextBox x:Name="CarIDTxt" HorizontalAlignment="Left" Margin="609,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CarIDTxt" HorizontalAlignment="Left" Margin="609,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="CarIDLbl" Content="ID:" HorizontalAlignment="Left" Margin="515,96,0,0" VerticalAlignment="Top"/>
 
     </Grid>

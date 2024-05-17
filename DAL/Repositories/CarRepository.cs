@@ -76,9 +76,14 @@ namespace DAL.Repositories
             {
                 DAL.Model.Car temp = context.Cars.Find(car.CarID);
                 var passengerToAdd = context.Passengers.Find(passenger.PassengerID);
-                temp.Passengers.Add(passengerToAdd);
-                temp.NumberOfPassengers++;
-
+                if (temp.Passengers.Count < 5)
+                {
+                    temp.Passengers.Add(passengerToAdd);
+                    temp.NumberOfPassengers++;
+                } else
+                {
+                    throw new Exception("Der kan ikke være flere passagere i bilen");
+                }
                 context.SaveChanges();
             }
         }

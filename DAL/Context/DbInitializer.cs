@@ -17,9 +17,9 @@ namespace DAL.Context
     {
         protected override void Seed(DataBaseContext context)
         {
-            Ferry f1 = new Ferry("Molslinjen", 400, 100, 99, 197, new List<Passenger>(), new List<Car>());
+            Ferry f1 = new Ferry("Molslinjen", 40, 10, 99, 197, new List<Passenger>(), new List<Car>());
             Ferry f2 = new Ferry("Scandlines", 40, 10, 99, 197, new List<Passenger>(), new List<Car>());
-            Ferry f3 = new Ferry("Stenaline", 200, 50, 99, 197, new List<Passenger>(), new List<Car>());
+            Ferry f3 = new Ferry("Stenaline", 40, 10, 99, 197, new List<Passenger>(), new List<Car>());
 
             Passenger passenger = new Passenger("Mathias", "Dreng", 23, new DateTime(2001, 2, 17));
 

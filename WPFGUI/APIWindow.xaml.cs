@@ -34,13 +34,7 @@ namespace WPFGUI
 
         private string ApiGetAllFerries()
         {
-            /*var client = new HttpClient();
-            string content = "";
-            HttpResponseMessage response = await client.GetAsync("https://localhost:44332/api/Ferry/getferry/1");
-            response.EnsureSuccessStatusCode();
-            content = await response.Content.ReadAsStringAsync();
-            return content;
-            */
+ 
             HttpClient client = new HttpClient();
 
             client.DefaultRequestHeaders.Accept.Clear();
