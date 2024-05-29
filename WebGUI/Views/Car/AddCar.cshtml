@@ -1,0 +1,28 @@
+﻿@model DTO.Model.Car
+
+@{
+    ViewBag.Title = "Add Car";
+}
+
+<h2>Add Car</h2>
+
+@using (Html.BeginForm("AddCar", "Car", new { ferryId = Model.FerryID }, FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.FerryID)
+    <div>
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Model)
+        @Html.EditorFor(model => model.Model)
+        @Html.ValidationMessageFor(model => model.Model)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.LicensePlate)
+        @Html.EditorFor(model => model.LicensePlate)
+        @Html.ValidationMessageFor(model => model.LicensePlate)
+    </div>
+    <button type="submit">Add Car</button>
+}

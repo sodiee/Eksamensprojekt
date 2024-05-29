@@ -1,0 +1,38 @@
+﻿@model DTO.Model.Car
+
+@{
+    ViewBag.Title = "Edit bil";
+}
+
+<h2>Edit</h2>
+
+<div>
+    @using (Html.BeginForm("Edit", "Car", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.CarID)
+        <div>
+            @Html.LabelFor(model => model.CarID)
+            @Html.DisplayFor(model => model.CarID)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Model)
+            @Html.EditorFor(model => model.Model)
+            @Html.ValidationMessageFor(model => model.Model)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.LicensePlate)
+            @Html.EditorFor(model => model.LicensePlate)
+            @Html.ValidationMessageFor(model => model.LicensePlate)
+        </div>
+        <input type="submit" value="Opdater bil" />
+    }
+    <br />
+</div>
+<p>
+    @Html.ActionLink("Tilbage", "Details", new { id = Model.FerryID }) |
+</p>

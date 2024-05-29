@@ -1,0 +1,31 @@
+﻿@model DTO.Model.Car
+
+<h2>Car Details</h2>
+
+<div>
+    <h4>Car ID: @Model.CarID</h4>
+    <div>
+        @Html.LabelFor(model => model.Name)
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Model)
+        @Html.DisplayFor(model => model.Model)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.LicensePlate)
+        @Html.DisplayFor(model => model.LicensePlate)
+    </div>
+    <div>
+        <ul>
+            @foreach (var passenger in ViewBag.Passengers)
+            {
+                <li>@passenger.Name - @passenger.Age - ID: @passenger.PassengerID</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@Html.ActionLink("Tilbage til færgeinfo", "Details", "Ferry", new { id = Model.FerryID }, null)
+@Html.ActionLink("Opdater bil", "Edit", "Car", new { id = Model.CarID }, null)
+@Html.ActionLink("Slet bil", "Delete", new { id = Model.CarID }, null)

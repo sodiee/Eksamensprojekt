@@ -14,22 +14,59 @@ namespace BLL.BLL
         }
         public void AddFerry(Ferry ferry)
         {
-            //valider ferry
             FerryRepository.AddFerry(ferry);
         }
-        public void EditFerry(Ferry ferry)
+        public void UpdateFerry(Ferry ferry)
         {
-
+            FerryRepository.UpdateFerry(ferry);
         }
 
         public List<Ferry> GetFerryList()
         {
-            return FerryRepository.getFerrys();
+            return FerryRepository.GetFerryList();
+        } 
+
+        public List<Passenger> GetPassengers(Ferry ferry)
+        {
+            return FerryRepository.GetPassengers(ferry);
         }
 
-        /*public void AddGæstTilFærge(Færge færge, Gæst gæst) 
+        public List<Car> GetCars(Ferry ferry)
         {
-            FærgeRepository.AddGæstTilFærge(færge, gæst);
-        }*/
+            return FerryRepository.GetCars(ferry);
+        }
+
+        public void AddPassengerToFerry(Ferry ferry, Passenger passenger) 
+        {
+            if (ferry.Passengers.Count < ferry.MaxNumberOfPassengers - 1)
+            {
+                FerryRepository.AddPassengerToFerry(ferry, passenger);
+            }
+            else
+            {
+                throw new Exception("Der kan ikke tilføjes flere biler til færgen");
+            }
+        }
+
+        public void AddCarToFerry(Ferry ferry, Car car)
+        {
+            if (ferry.Cars.Count < ferry.MaxNumberOfCars - 1)
+            {
+                FerryRepository.AddCarToFerry(ferry, car);
+            } else
+            {
+                throw new Exception("Der kan ikke tilføjes flere biler til færgen");
+            }
+        }
+
+        public void RemoveFerry(int id)
+        {
+            FerryRepository.RemoveFerry(GetFerry(id));
+        }
+
+        public void RemoveAllFerries()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

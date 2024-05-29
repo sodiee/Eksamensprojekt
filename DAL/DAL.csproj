@@ -51,12 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\CarContext.cs" />
-    <Compile Include="Context\CarInitializer.cs" />
-    <Compile Include="Context\FerryContext.cs" />
-    <Compile Include="Context\FerryInitializer.cs" />
-    <Compile Include="Context\PassengerContext.cs" />
-    <Compile Include="Context\PassengerInitializer.cs" />
+    <Compile Include="Context\DataBaseContext.cs" />
+    <Compile Include="Context\DbInitializer.cs" />
     <Compile Include="Mappers\CarMapper.cs" />
     <Compile Include="Mappers\FerryMapper.cs" />
     <Compile Include="Mappers\PassengerMapper.cs" />

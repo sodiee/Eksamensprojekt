@@ -1,0 +1,15 @@
+﻿@model DTO.Model.Car
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<p>Er du sikker på, at du vil slette bilen med ID @Model.CarID og navn @Model.Name?</p>
+
+@using (Html.BeginForm("DeleteConfirmed", "Car", new { id = Model.CarID, ferryId = Model.FerryID }, FormMethod.Post))
+{
+    <input type="submit" value="Slet" class="btn btn-danger" />
+    @Html.ActionLink("Annuller", "Details", new { id = Model.CarID }, new { @class = "btn btn-default" })
+}

@@ -15,14 +15,18 @@ namespace BLL.BLL
             if (id < 0) throw new IndexOutOfRangeException();
             return PassengerRepository.GetPassenger(id);
         }
-        public void AddGæst(Passenger passenger)
+        public void AddPassenger(Passenger passenger)
         {
-            //valider employee
             PassengerRepository.AddPassenger(passenger);
         }
-        public void EditGæst(Passenger passenger)
+        public void UpdatePassenger(Passenger passenger)
         {
+            PassengerRepository.UpdatePassenger(passenger);
+        }
 
+        public void RemovePassenger(Passenger passenger)
+        {
+            PassengerRepository.RemovePassenger(passenger);
         }
     }
 }

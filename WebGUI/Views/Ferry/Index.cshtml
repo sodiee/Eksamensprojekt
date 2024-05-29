@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DTO.Model.Ferry>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+            <th>@Html.DisplayNameFor(model => model.First().MaxNumberOfCars)</th>
+            <th>@Html.DisplayNameFor(model => model.First().MaxNumberOfPassengers)</th>
+            <th>@Html.DisplayNameFor(model => model.First().PricePassengers)</th>
+            <th>@Html.DisplayNameFor(model => model.First().PriceCars)</th>
+            <th>Total Guests</th>
+            <th>Total Cars</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.MaxNumberOfCars)</td>
+                <td>@Html.DisplayFor(modelItem => item.MaxNumberOfPassengers)</td>
+                <td>@Html.DisplayFor(modelItem => item.PricePassengers)</td>
+                <td>@Html.DisplayFor(modelItem => item.PriceCars)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalPricePassengers)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalPriceCars)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalPrice)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.FerryID }, new { @class = "btn btn-default btn-sm" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.FerryID }, new { @class = "btn btn-info btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FerryID }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

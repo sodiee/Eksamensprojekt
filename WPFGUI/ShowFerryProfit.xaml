@@ -1,0 +1,18 @@
+﻿<Window x:Class="WPFGUI.ShowFerryProfit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFGUI"
+        mc:Ignorable="d"
+        Title="ShowFerryProfit" Height="450" Width="800">
+    <Grid Loaded="Grid_Loaded">
+        <Label x:Name="TotalPricePassengersLbl" Content="Total pris for passagere: " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalPriceCarsLbl" Content="Total pris for biler: " HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalPriceBothLbl" Content="Total pris for begge: " HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TotalPricePassengersTxt" HorizontalAlignment="Left" Margin="153,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TotalPriceCarsTxt" HorizontalAlignment="Left" Margin="153,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TotalPriceBothTxt" HorizontalAlignment="Left" Margin="153,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,44 @@
+﻿@model DTO.Model.Passenger
+
+@{
+    ViewBag.Title = "Add Passenger";
+}
+
+<h2>Add Passenger</h2>
+
+@using (Html.BeginForm("AddPassenger", "Passenger", new { ferryId = Model.FerryID }, FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.FerryID)
+    <div>
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Gender)
+        @Html.EditorFor(model => model.Gender)
+        @Html.ValidationMessageFor(model => model.Gender)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Age)
+        @Html.EditorFor(model => model.Age)
+        @Html.ValidationMessageFor(model => model.Age)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Birthday)
+        @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.Birthday)
+    </div>
+    <div>
+        <label for="CarId">Choose a car:</label>
+        <select name="CarId">
+            @foreach (var car in ViewBag.Cars)
+            {
+                <option value="@car.CarID">@car.Name - @car.Model</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Add Passenger</button>
+}

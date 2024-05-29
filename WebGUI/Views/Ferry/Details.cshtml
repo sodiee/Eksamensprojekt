@@ -1,0 +1,58 @@
+﻿@model DTO.Model.Ferry
+
+@{
+    ViewBag.Title = "Ferry Details";
+}
+
+<h2>Ferry Details</h2>
+
+<div>
+    <h4>Ferry ID: @Model.FerryID</h4>
+    @Html.LabelFor(model => model.Name)
+    @Html.DisplayFor(model => model.Name)
+    <br />
+    @Html.LabelFor(model => model.MaxNumberOfCars)
+    @Html.DisplayFor(model => model.MaxNumberOfCars)
+    <br />
+    @Html.LabelFor(model => model.MaxNumberOfPassengers)
+    @Html.DisplayFor(model => model.MaxNumberOfPassengers)
+    <br />
+    @Html.LabelFor(model => model.PricePassengers)
+    @Html.DisplayFor(model => model.PricePassengers)
+    <br />
+    @Html.LabelFor(model => model.PriceCars)
+    @Html.DisplayFor(model => model.PriceCars)
+    <br />
+</div>
+
+<h4>Passengers on Ferry</h4>
+<ul>
+    @foreach (var passenger in ViewBag.Passengers)
+    {
+        <li>@Html.ActionLink($"{passenger.Name} - {passenger.Age} - ID: {passenger.PassengerID}", "Details", "Passenger", new { id = passenger.PassengerID }, null)</li>
+    }
+</ul>
+
+<div>
+    @Html.ActionLink("Tilføj passager", "AddPassenger", "Passenger", new { ferryId = Model.FerryID }, null)
+</div>
+
+<br />
+
+<div>
+    <h4>Cars on Ferry</h4>
+    <ul>
+        @foreach (var car in ViewBag.Cars)
+        {
+            <li>@Html.ActionLink($"{car.Name} - {car.Model} - License Plate: {car.LicensePlate}", "Details", "Car", new { id = car.CarID }, null)</li>
+        }
+    </ul>
+
+    @Html.ActionLink("Tilføj bil", "AddCar", "Car", new { ferryId = Model.FerryID }, null)
+</div>
+
+<p>
+    @Html.ActionLink("Back to Overview", "Index", "Ferry")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FerryID }, null)
+    @Html.ActionLink("Delete", "Delete", new { id = Model.FerryID }, null)
+</p>

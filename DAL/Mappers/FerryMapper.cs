@@ -1,4 +1,5 @@
 ﻿using DAL.Model;
+using DTO.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,54 +10,73 @@ namespace DAL.Mappers
 {
     internal class FerryMapper
     {
-        public static DTO.Model.Ferry Map(Ferry færge)
+        public static DTO.Model.Ferry Map(Ferry ferry)
         {
-            List<DTO.Model.Passenger> færgeGæster = new List<DTO.Model.Passenger>();
-            List<DTO.Model.Car> færgeBiler = new List<DTO.Model.Car>();
+            List<DTO.Model.Passenger> ferryPassengers = new List<DTO.Model.Passenger>();
 
-            foreach (var DALgæst in færge.Passengers)
+            if (ferry.Passengers.Count != 0)
             {
-                færgeGæster.Add(new DTO.Model.Passenger(DALgæst.Name, DALgæst.Gender, DALgæst.Age, DALgæst.Birthday));
+                foreach (var DALPassenger in ferry.Passengers)
+                {
+                    ferryPassengers.Add(new DTO.Model.Passenger(DALPassenger.Name, DALPassenger.Gender, DALPassenger.Age, DALPassenger.Birthday));
+                }
             }
 
-            foreach (var DALbil in færge.Cars)
+            List<DTO.Model.Car> ferryCars = new List<DTO.Model.Car>();
+
+            if (ferry.Cars.Count != 0)
             {
-                færgeBiler.Add(new DTO.Model.Car(new DTO.Model.Passenger(DALbil.Driver.Name, DALbil.Driver.Gender, DALbil.Driver.Age, DALbil.Driver.Birthday), 
-                    DALbil.NumberOfPassengers, DALbil.Name, DALbil.Model, DALbil.LicensePlate));
+                foreach (var DALCar in ferry.Cars)
+                {
+                    ferryCars.Add(new DTO.Model.Car(DALCar.NumberOfPassengers, DALCar.Name, DALCar.Model, DALCar.LicensePlate));
+                }
             }
 
-            return new DTO.Model.Ferry(
-                            færge.Name,
-                            færge.MaxNumberOfPassengers,
-                            færge.MaxNumberOfCars,
-                            færgeGæster,
-                            færgeBiler
-                        );
+            return new DTO.Model.Ferry {
+                            FerryID = ferry.FerryID,
+                            Name = ferry.Name,
+                            MaxNumberOfPassengers = ferry.MaxNumberOfPassengers,
+                            MaxNumberOfCars = ferry.MaxNumberOfCars,
+                            PricePassengers = ferry.PricePassengers,
+                            PriceCars = ferry.PriceCars,
+                            Passengers = ferryPassengers,
+                            Cars= ferryCars
+                        };
         }
 
-        public static Ferry Map(DTO.Model.Ferry færge)
+        public static Ferry Map(DTO.Model.Ferry ferry)
         {
-            List<Passenger> færgeGæster = new List<Passenger>();
-            List<Car> færgeBiler = new List<Car>();
+            List<Passenger> ferryPassengers = new List<Passenger>();
 
-            foreach (var DTOgæst in færge.Passengers)
+            if (ferry.Passengers.Count != 0)
             {
-                færgeGæster.Add(new Passenger(DTOgæst.Name, DTOgæst.Gender, DTOgæst.Age, DTOgæst.Birthday));
+                foreach (var DTOPassenger in ferry.Passengers)
+                {
+                    ferryPassengers.Add(new Passenger(DTOPassenger.Name, DTOPassenger.Gender, DTOPassenger.Age, DTOPassenger.Birthday));
+                }
+            }
+            List<DAL.Model.Car> ferryCars = new List<DAL.Model.Car>();
+
+            if (ferry.Cars.Count != 0)
+            {
+                foreach (var DTObil in ferry.Cars)
+                {
+                    ferryCars.Add(new DAL.Model.Car(
+                        DTObil.NumberOfPassengers, DTObil.Name, DTObil.Model, DTObil.LicensePlate));
+                }
             }
 
-            foreach (var DTObil in færge.Cars)
+            return new Ferry
             {
-                færgeBiler.Add(new Car(new Passenger(DTObil.Driver.Name, DTObil.Driver.Gender, DTObil.Driver.Age, DTObil.Driver.Birthday),
-                    DTObil.NumberOfPassengers, DTObil.Name, DTObil.Model, DTObil.LicensePlate));
-            }
-
-            return new Ferry(
-                            færge.Name,
-                            færge.MaxNumberOfPassengers,
-                            færge.MaxNumberOfCars,
-                            færgeGæster,
-                            færgeBiler
-                        );
+                FerryID = ferry.FerryID,
+                Name = ferry.Name,
+                MaxNumberOfPassengers = ferry.MaxNumberOfPassengers,
+                MaxNumberOfCars = ferry.MaxNumberOfCars,
+                PricePassengers = ferry.PricePassengers,
+                PriceCars = ferry.PriceCars,
+                Passengers = ferryPassengers,
+                Cars = ferryCars
+            };
         }
     }
 }

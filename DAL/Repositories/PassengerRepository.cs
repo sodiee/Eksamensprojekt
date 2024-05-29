@@ -4,6 +4,7 @@ using DAL.Model;
 using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace DAL.Repositories
     {
         public static DTO.Model.Passenger GetPassenger(int id)
         {
-            using (PassengerContext context = new PassengerContext())
+            using (DataBaseContext context = new DataBaseContext())
             {
                 return PassengerMapper.Map(context.Passengers.Find(id));
             }
@@ -22,22 +23,47 @@ namespace DAL.Repositories
 
         public static void AddPassenger(DTO.Model.Passenger gæst)
         {
-            using (PassengerContext context = new PassengerContext())
+            using (DataBaseContext context = new DataBaseContext())
             {
-                context.Passengers.Add(PassengerMapper.Map(gæst));
+                Passenger addedPassenger = context.Passengers.Add(PassengerMapper.Map(gæst));
                 context.SaveChanges();
+
+                gæst.PassengerID = addedPassenger.PassengerID;
             }
         }
 
-        /*public static void EditGæst(Gæst gæst)
+        public static void RemovePassenger(DTO.Model.Passenger passenger)
         {
-            using (FærgeContext context = new FærgeContext())
+            using (DataBaseContext context = new DataBaseContext())
             {
-                Gæst dataGæst = context.Gæster.Find(gæst.ID);
-                GæstMapper.UpdateFærge(gæst, dataGæst);
+                Passenger pToRemove = PassengerMapper.Map(GetPassenger(passenger.PassengerID));
+                context.Passengers.Attach(pToRemove);
+                context.Passengers.Remove(pToRemove);
+
+                context.SaveChanges ();
+            }
+        }
+
+        public static void UpdatePassenger(DTO.Model.Passenger dtoPassenger)
+        {
+            using (DataBaseContext context = new DataBaseContext())
+            {
+                Passenger passengerToUpdate = context.Passengers.Find(dtoPassenger.PassengerID);
+
+                if (passengerToUpdate != null)
+                {
+                    passengerToUpdate.Name = dtoPassenger.Name;
+                    passengerToUpdate.Gender = dtoPassenger.Gender;
+                    passengerToUpdate.Age = dtoPassenger.Age;
+                    passengerToUpdate.Birthday = dtoPassenger.Birthday;
+                }
+                else
+                {
+                    throw new DbUpdateException();
+                }
 
                 context.SaveChanges();
             }
-        }*/
+        }
     }
 }
