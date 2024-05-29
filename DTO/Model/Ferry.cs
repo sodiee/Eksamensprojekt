@@ -40,5 +40,10 @@ namespace DTO.Model
             this.passengers = passengers;
             this.cars = cars;
         }
+
+        public override string ToString()
+        {
+            return this.FerryID + "";
+        }
     }
 }
